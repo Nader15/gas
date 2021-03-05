@@ -123,7 +123,7 @@ class _MyAddressesState extends State<MyAddresses> {
             ),
             Text(
               location,
-              style: TextStyle(),
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
             ),
             SizedBox(
               height: 10,
