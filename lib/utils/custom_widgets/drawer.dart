@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gas/ui/home_page.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/navigator.dart';
@@ -26,10 +27,9 @@ class drawerList extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: whiteColor,
-                size: 30,
+              leading: SvgPicture.asset(
+                "assets/images/home.svg",
+                color: blackColor.withOpacity(0.6),
               ),
               title: Text(
                 translator.translate('appTitle'),
@@ -40,10 +40,9 @@ class drawerList extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: whiteColor,
-                size: 30,
+              leading: SvgPicture.asset(
+                "assets/images/addresses.svg",
+                color: blackColor.withOpacity(0.6),
               ),
               title: Text(
                 "عناويني",
@@ -54,10 +53,9 @@ class drawerList extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: whiteColor,
-                size: 30,
+              leading: SvgPicture.asset(
+                "assets/images/wallet.svg",
+                color: blackColor.withOpacity(0.6),
               ),
               title: Text(
                 "محفظتي",
@@ -68,10 +66,9 @@ class drawerList extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: whiteColor,
-                size: 30,
+              leading: SvgPicture.asset(
+                "assets/images/notification.svg",
+                color: blackColor.withOpacity(0.6),
               ),
               title: Text(
                 "التنبيهات",
@@ -81,11 +78,44 @@ class drawerList extends StatelessWidget {
                 navigateAndClearStack(context, Notifications());
               },
             ),
+            Divider(),
             ListTile(
-              leading: Icon(
-                Icons.home,
-                color: whiteColor,
-                size: 30,
+              leading: SvgPicture.asset(
+                "assets/images/settings.svg",
+                color: blackColor.withOpacity(0.6),
+              ),
+              title: Text(
+                "الاعدادات",
+                style: _textStyle,
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: SvgPicture.asset(
+                "assets/images/call.svg",
+                color: blackColor.withOpacity(0.6),
+              ),
+              title: Text(
+                "أتصل بنا",
+                style: _textStyle,
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: SvgPicture.asset(
+                "assets/images/share.svg",
+                color: blackColor.withOpacity(0.6),
+              ),
+              title: Text(
+                "مشاركة التطبيق",
+                style: _textStyle,
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: SvgPicture.asset(
+                "assets/images/language.svg",
+                color: blackColor.withOpacity(0.6),
               ),
               title: Text(
                 translator.translate('changeLanguage'),
@@ -100,6 +130,18 @@ class drawerList extends StatelessWidget {
                 );
               },
             ),
+            Divider(),
+            ListTile(
+              leading: SvgPicture.asset(
+                "assets/images/logout.svg",
+                color: blackColor.withOpacity(0.6),
+              ),
+              title: Text(
+                "تسجيل خروج",
+                style: _textStyle,
+              ),
+              onTap: () {},
+            ),
           ],
         ),
       ),
@@ -107,7 +149,5 @@ class drawerList extends StatelessWidget {
   }
 }
 
-TextStyle _textStyle = TextStyle(
-  color: whiteColor,
-  fontSize: 24,
-);
+TextStyle _textStyle =
+    TextStyle(color: whiteColor, fontSize: 24, fontWeight: FontWeight.w100);

@@ -18,7 +18,7 @@ class _MyWalletState extends State<MyWallet> {
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
-        title: Text("محفظتي"),
+        title: Text("محفظتي", style: TextStyle(fontWeight: FontWeight.w100)),
         actions: [
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
         ],
@@ -49,14 +49,14 @@ class _MyWalletState extends State<MyWallet> {
                           Text(
                             "الرصيد",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w100),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Center(
                             child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -64,7 +64,7 @@ class _MyWalletState extends State<MyWallet> {
                                   style: TextStyle(
                                       fontSize: 40,
                                       color: greenAppColor,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w100),
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -72,9 +72,9 @@ class _MyWalletState extends State<MyWallet> {
                                 Text(
                                   "ريال",
                                   style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 25,
                                       color: greenAppColor,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w100),
                                 ),
                               ],
                             ),
@@ -109,7 +109,7 @@ class _MyWalletState extends State<MyWallet> {
                                     "اضافة رصيد",
                                     style: TextStyle(
                                         color: greenAppColor,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w100),
                                   ),
                                 ],
                               )),
@@ -130,21 +130,21 @@ class _MyWalletState extends State<MyWallet> {
                               Text(
                                 "أكواد الخصم",
                                 style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.w100),
                               ),
                               Text(
                                 "تاريخ الانتهاء",
                                 style: TextStyle(
-                                  color: greenAppColor,
-                                  fontSize: 20,
-                                ),
+                                    color: greenAppColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w100),
                               ),
                               Text(
                                 "القيمة",
                                 style: TextStyle(
                                   color: greenAppColor,
-                                  fontSize: 20,
+                                  fontSize: 20
+                                    , fontWeight: FontWeight.w100
                                 ),
                               ),
                             ],
@@ -163,12 +163,12 @@ class _MyWalletState extends State<MyWallet> {
                               Text(
                                 "1/2/2022",
                                 style: TextStyle(
-                                    color: greenAppColor, fontSize: 15),
+                                    color: greenAppColor, fontSize: 20),
                               ),
                               Text(
                                 "5%",
                                 style: TextStyle(
-                                    color: greenAppColor, fontSize: 15),
+                                    color: greenAppColor, fontSize: 20),
                               ),
                             ],
                           ),
@@ -183,19 +183,19 @@ class _MyWalletState extends State<MyWallet> {
                                     color: greenAppColor, fontSize: 20),
                               ),
                               Text(
-                                "1/2/2022",textDirection: TextDirection.rtl,
+                                "1/2/2022",
+                                textDirection: TextDirection.rtl,
                                 style: TextStyle(
-                                    color: greenAppColor, fontSize: 15),
+                                    color: greenAppColor, fontSize: 20),
                               ),
                               Text(
                                 "10ريال",
                                 style: TextStyle(
-                                    color: greenAppColor, fontSize: 15),
+                                    color: greenAppColor, fontSize: 20),
                               ),
                             ],
                           ),
                           CustomDivider(),
-
                           TextButton(
                               onPressed: () {},
                               child: Row(
@@ -223,7 +223,7 @@ class _MyWalletState extends State<MyWallet> {
                                     "اضافة كود / كوبون",
                                     style: TextStyle(
                                         color: greenAppColor,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w100),
                                   ),
                                 ],
                               )),
@@ -241,21 +241,18 @@ class _MyWalletState extends State<MyWallet> {
                           Text(
                             "تبديل مجاني",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w100),
                           ),
                           SizedBox(
-                            width: 10,
+                            height: 10,
                           ),
                           Text(
                             "أحصل علي تبديل مجاني للاسطوانة عند استبدال عدد 7 اسطوانات خلال عام واحد",
-                            style: TextStyle(),
-                          ),
-                          SizedBox(
-                            width: 10,
+                            style: TextStyle(fontWeight: FontWeight.w100),
                           ),
                           Center(
                             child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -287,9 +284,6 @@ class _MyWalletState extends State<MyWallet> {
                   ),
                 ],
               )),
-          SizedBox(
-            height: 20,
-          ),
         ],
       ),
     );

@@ -6,7 +6,7 @@ const Color geyHintText = Color(0xffc9c9c9);
 const Color geySlider = Color(0xff828282);
 const Color greyPrimaryColor = Color(0xffb8c3cb);
 
-Color primaryAppColor = Colors.orange;
+Color primaryAppColor = Colors.deepOrange;
 Color greenAppColor = Colors.green;
 Color textColor = Color(0xFF49B3E6);
 Color borderColor = Color(0xFF49B3E6).withOpacity(.2);
@@ -23,7 +23,7 @@ Color backgroundColor = Color(0xff173049);
    Color whiteColor = Colors.white;
    Color greenColor = Colors.green;
  Color blackColor = Colors.black ;
- Color redColor = Color(0xfffe065c);
+ Color redColor = Colors.red;
 Color greyBorder = Color(0xffe3e3e3);
 Color brownishGrey = Color(0xff676767);
 Color brownishGrey2 = Color(0xfff3f2f2);

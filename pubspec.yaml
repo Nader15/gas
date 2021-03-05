@@ -43,5 +43,12 @@ flutter:
 
   uses-material-design: true
   assets:
+    - assets/images/
     - assets/langs/en.json
     - assets/langs/ar.json
+
+  fonts:
+    - family: AraHamahHoms
+      fonts:
+        - asset: assets/fonts/AraHamahHoms-Regular-1.ttf
+          weight: 100

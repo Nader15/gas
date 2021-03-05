@@ -20,6 +20,7 @@ main() async {
     ),
   );
 }
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -30,10 +31,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: HomePage(),
-      home: MyAddresses(),
-      localizationsDelegates: translator.delegates, // Android + iOS Delegates
-      locale: translator.locale, // Active locale
+      title: "Gas Express",
+      theme: ThemeData(
+        fontFamily: translator.currentLanguage == "ar" ? 'AraHamahHoms' : "Roboto",
+      ),
+      home: HomePage(),
+      // home: MyAddresses(),
+      localizationsDelegates: translator.delegates,
+      // Android + iOS Delegates
+      locale: translator.locale,
+      // Active locale
       supportedLocales: translator.locals(), // Locals list
     );
   }

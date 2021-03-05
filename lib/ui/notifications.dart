@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
@@ -18,7 +19,10 @@ class _NotificationsState extends State<Notifications> {
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
-        title: Text("التنبيهات"),
+        title: Text(
+          "التنبيهات",
+          style: TextStyle(fontWeight: FontWeight.w100),
+        ),
         actions: [
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
         ],
@@ -49,17 +53,14 @@ class _NotificationsState extends State<Notifications> {
                           Text(
                             "عنوان التنبية",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w100),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Text(
                             "أحصل علي تبديل مجاني للاسطوانة عند استبدال عدد 7 اسطوانات خلال عام واحد",
-                            style: TextStyle(),
-                          ),
-                          SizedBox(
-                            width: 10,
+                            style: TextStyle(fontWeight: FontWeight.w100),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -70,12 +71,9 @@ class _NotificationsState extends State<Notifications> {
                                     "حذف",
                                     style: TextStyle(
                                         color: greenAppColor,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.w100),
                                   )),
                             ],
-                          ),
-                          SizedBox(
-                            height: 10,
                           ),
                         ],
                       ),
@@ -91,7 +89,7 @@ class _NotificationsState extends State<Notifications> {
                           Text(
                             "عنوان التنبية",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w100),
                           ),
                           SizedBox(
                             height: 10,
@@ -115,9 +113,6 @@ class _NotificationsState extends State<Notifications> {
                                         fontWeight: FontWeight.bold),
                                   )),
                             ],
-                          ),
-                          SizedBox(
-                            height: 10,
                           ),
                         ],
                       ),
@@ -134,7 +129,7 @@ class _NotificationsState extends State<Notifications> {
                             "مسح الكل",
                             style: TextStyle(
                                 color: greenAppColor,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w100),
                           )),
                       TextButton(
                           onPressed: () {},
@@ -142,7 +137,7 @@ class _NotificationsState extends State<Notifications> {
                             "مسح المحدد",
                             style: TextStyle(
                                 color: greenAppColor,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w100),
                           )),
                     ],
                   )

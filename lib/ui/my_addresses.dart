@@ -17,7 +17,10 @@ class _MyAddressesState extends State<MyAddresses> {
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
-        title: Text("عناويني"),
+        title: Text(
+          "عناويني",
+          style: TextStyle(fontWeight: FontWeight.w100),
+        ),
         actions: [
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
         ],
@@ -69,11 +72,7 @@ class _MyAddressesState extends State<MyAddresses> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    "اضافة عنوان",
-                    style: TextStyle(
-                        color: greenAppColor, fontWeight: FontWeight.bold),
-                  ),
+                  Text("اضافة عنوان", style: _titleTextStyle),
                 ],
               ))
         ],
@@ -98,18 +97,13 @@ class _MyAddressesState extends State<MyAddresses> {
                     Text(
                       title,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w100),
                     ),
                     SizedBox(
                       width: 10,
                     ),
                     defaultAddress == true
-                        ? Text(
-                            "(الافتراضي)",
-                            style: TextStyle(
-                                color: greenAppColor,
-                                fontWeight: FontWeight.bold),
-                          )
+                        ? Text("(الافتراضي)", style: _titleTextStyle)
                         : Container(),
                   ],
                 ),
@@ -120,12 +114,7 @@ class _MyAddressesState extends State<MyAddresses> {
                             defaultAddress = !defaultAddress;
                           });
                         },
-                        child: Text(
-                          "تعيين كأفتراضي",
-                          style: TextStyle(
-                              color: greenAppColor,
-                              fontWeight: FontWeight.bold),
-                        ))
+                        child: Text("تعيين كأفتراضي", style: _titleTextStyle))
                     : Container()
               ],
             ),
@@ -144,13 +133,7 @@ class _MyAddressesState extends State<MyAddresses> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text(
-                    "تعديل",
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: greenAppColor,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  child: Text("تعديل", style: _bttnTextStyle),
                 ),
                 SizedBox(
                   width: 10,
@@ -159,10 +142,7 @@ class _MyAddressesState extends State<MyAddresses> {
                   onPressed: () {},
                   child: Text(
                     "حذف",
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: greenAppColor,
-                        fontWeight: FontWeight.bold),
+                    style: _bttnTextStyle,
                   ),
                 ),
               ],
@@ -173,3 +153,8 @@ class _MyAddressesState extends State<MyAddresses> {
     );
   }
 }
+
+TextStyle _bttnTextStyle =
+    TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
+TextStyle _titleTextStyle =
+    TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
