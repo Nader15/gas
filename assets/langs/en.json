@@ -1,5 +1,6 @@
 {
   "appTitle": "Home Page",
-  "name": "Name",
-  "ok": "Ok "
+  "lang": "EN",
+  "about": "About",
+  "changeLanguage": "Change Language"
 }
