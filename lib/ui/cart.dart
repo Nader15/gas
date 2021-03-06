@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:gas/ui/payment.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -18,33 +20,41 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(20.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              height: 40,
-              width: MediaQuery.of(context).size.width/3.5,
-              decoration: BoxDecoration(
-                  color: redColor, borderRadius: BorderRadius.circular(5)),
-              alignment: Alignment.center,
-              child: Text("60  ريال",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w100,
-                      fontSize: 18,
-                      color: whiteColor)),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                height: 40,
+                width: MediaQuery.of(context).size.width / 3.5,
+                decoration: BoxDecoration(
+                    color: redColor, borderRadius: BorderRadius.circular(5)),
+                alignment: Alignment.center,
+                child: Text("60  ريال",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w100,
+                        fontSize: 18,
+                        color: whiteColor)),
+              ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width/2,
-              height: 40,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(5)),
-              alignment: Alignment.center,
-              child: Text("اتمام عملية الشراء",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w100,
-                      fontSize: 18,
-                      color: whiteColor)),
+            InkWell(
+              onTap: () {
+                navigateAndKeepStack(context, Payment());
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.blue, borderRadius: BorderRadius.circular(5)),
+                alignment: Alignment.center,
+                child: Text("اتمام عملية الشراء",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w100,
+                        fontSize: 18,
+                        color: whiteColor)),
+              ),
             ),
           ],
         ),
@@ -164,12 +174,16 @@ class _CartState extends State<Cart> {
                             ),
                           ],
                         )),
-                    IconButton(
-                        icon: Icon(
-                          Icons.delete_forever,
-                          color: redColor,
-                        ),
-                        onPressed: () {})
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Icon(
+                        Icons.delete_forever,
+                        color: redColor,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -371,7 +385,9 @@ class _CartState extends State<Cart> {
                         decoration: InputDecoration(
                             alignLabelWithHint: false,
                             contentPadding: EdgeInsets.zero,
-                            hintText: "اليوم", border: OutlineInputBorder()),
+                            hintStyle: TextStyle(color: grey),
+                            hintText: "اليوم",
+                            border: OutlineInputBorder()),
                       ),
                     ),
                     SizedBox(
@@ -382,9 +398,11 @@ class _CartState extends State<Cart> {
                       height: 30,
                       child: TextFormField(
                         decoration: InputDecoration(
-                          alignLabelWithHint: false,
-                          contentPadding: EdgeInsets.zero,
-                            hintText: "الساعة", border: OutlineInputBorder()),
+                            alignLabelWithHint: false,
+                            contentPadding: EdgeInsets.zero,
+                            hintStyle: TextStyle(color: grey),
+                            hintText: "الساعة",
+                            border: OutlineInputBorder()),
                       ),
                     ),
                   ],
@@ -418,14 +436,18 @@ class _CartState extends State<Cart> {
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width/1.5,
+                  width: MediaQuery.of(context).size.width / 1.5,
                   height: 30,
                   child: TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_on,color: greenAppColor,),
+                        prefixIcon: Icon(
+                          Icons.location_on,
+                          color: greenAppColor,
+                        ),
                         alignLabelWithHint: false,
                         contentPadding: EdgeInsets.zero,
-                        hintText: "حي الصفا ، شارع ابو محجن 10201", border: OutlineInputBorder()),
+                        hintText: "حي الصفا ، شارع ابو محجن 10201",
+                        border: OutlineInputBorder()),
                   ),
                 ),
               ],
@@ -436,8 +458,5 @@ class _CartState extends State<Cart> {
     );
   }
 }
-
-TextStyle _bttnTextStyle =
-    TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
 TextStyle _titleTextStyle =
     TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
