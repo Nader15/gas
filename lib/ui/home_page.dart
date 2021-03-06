@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gas/ui/cart.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
 import 'package:gas/ui/products.dart';
 import 'package:gas/ui/new_products.dart';
 import 'package:gas/ui/recharge.dart';
+import 'package:gas/utils/navigator.dart';
 
 class HomePage extends StatefulWidget {
   final int currentIndex;
@@ -29,7 +31,11 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: AppBar(
             actions: [
-              IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
+              IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    navigateAndKeepStack(context, Cart());
+                  })
             ],
             backgroundColor: primaryAppColor,
             leading: IconButton(
