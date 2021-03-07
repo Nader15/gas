@@ -29,6 +29,7 @@ class _SplashState extends State<Splash> {
       APP_LOGO,
       fit: BoxFit.cover,
       height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
     ));
   }
 }

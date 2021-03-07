@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/ui/home_page.dart';
 import 'package:gas/ui/splash.dart';
@@ -7,6 +8,7 @@ import 'package:gas/ui/my_addresses.dart';
 main() async {
   // if your flutter > 1.7.8 :  ensure flutter activated
   WidgetsFlutterBinding.ensureInitialized();
+  GestureBinding.instance?.resamplingEnabled = true;
 
   await translator.init(
     localeDefault: LocalizationDefaultType.device,
