@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/orders_list.dart';
@@ -22,13 +23,15 @@ class _OrderStatusState extends State<OrderStatus> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "حالة الطلب",
+          getTranslated(context, "OrderStatus2"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
-          IconButton(icon: Icon(Icons.directions_car), onPressed: () {
-            navigateAndKeepStack(context, OrdersList());
-          })
+          IconButton(
+              icon: Icon(Icons.directions_car),
+              onPressed: () {
+                navigateAndKeepStack(context, OrdersList());
+              })
         ],
       ),
       body: Container(
@@ -58,13 +61,14 @@ class _OrderStatusState extends State<OrderStatus> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("حالة الطلب",
+                              Text(getTranslated(context, "OrderStatus2"),
                                   style: TextStyle(
                                       fontWeight: FontWeight.w100,
                                       fontSize: 18,
                                       color: whiteColor)),
                               Center(
-                                child: Text("الطلب مع السائق",
+                                child: Text(
+                                    getTranslated(context, "OrderWithDriver"),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 30,
@@ -85,7 +89,7 @@ class _OrderStatusState extends State<OrderStatus> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("رقم الطلب",
+                                Text(getTranslated(context, "OrderNumber"),
                                     style: TextStyle(
                                       fontWeight: FontWeight.w100,
                                       fontSize: 20,
@@ -154,7 +158,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                         color: greenAppColor,
                                         borderRadius: BorderRadius.circular(5)),
                                     alignment: Alignment.center,
-                                    child: Text("تفاصيل الفاتورة",
+                                    child: Text(
+                                        getTranslated(
+                                            context, "InvoiceDetails"),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 18,
@@ -173,7 +179,8 @@ class _OrderStatusState extends State<OrderStatus> {
                                             border:
                                                 Border.all(color: Colors.blue)),
                                         alignment: Alignment.center,
-                                        child: Text("تعديل الطلب",
+                                        child: Text(
+                                            getTranslated(context, "EditOrder"),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w100,
                                                 fontSize: 18,
@@ -201,11 +208,13 @@ class _OrderStatusState extends State<OrderStatus> {
                             SizedBox(
                               height: 10,
                             ),
-                            Text("موقع التسليم",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w100,
-                                    fontSize: 18,
-                                    color: greenAppColor)),
+                            Text(
+                              getTranslated(context, "DeliveryLocation"),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 18,
+                                  color: greenAppColor),
+                            ),
                             SizedBox(
                               height: 10,
                             ),
@@ -227,11 +236,13 @@ class _OrderStatusState extends State<OrderStatus> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("المبلغ المطلوب",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w100,
-                                    fontSize: 18,
-                                    color: whiteColor)),
+                            Text(
+                              getTranslated(context, "RequiredAmount"),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 18,
+                                  color: whiteColor),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -243,7 +254,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text("ريال",
+                                Text(getTranslated(context, "SR"),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 30,

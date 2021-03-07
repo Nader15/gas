@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/payment.dart';
@@ -32,7 +33,7 @@ class _CartState extends State<Cart> {
                 decoration: BoxDecoration(
                     color: redColor, borderRadius: BorderRadius.circular(5)),
                 alignment: Alignment.center,
-                child: Text("60  ريال",
+                child: Text("60 " + getTranslated(context, "SR"),
                     style: TextStyle(
                         fontWeight: FontWeight.w100,
                         fontSize: 18,
@@ -49,7 +50,7 @@ class _CartState extends State<Cart> {
                 decoration: BoxDecoration(
                     color: Colors.blue, borderRadius: BorderRadius.circular(5)),
                 alignment: Alignment.center,
-                child: Text("اتمام عملية الشراء",
+                child: Text(getTranslated(context, "CompleteThePurchase"),
                     style: TextStyle(
                         fontWeight: FontWeight.w100,
                         fontSize: 18,
@@ -63,7 +64,7 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "تفاصيل الطلب",
+          getTranslated(context, "OrderDetails"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -189,13 +190,13 @@ class _CartState extends State<Cart> {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.all(5),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   border: Border.all(color: greenAppColor)),
               child: Text(
-                "15.25 ر.س",
+                "15.25 " + getTranslated(context, "Currency"),
                 style: TextStyle(color: greenAppColor),
               ),
             ),
@@ -219,7 +220,7 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "قيمة المنتجات",
+                  getTranslated(context, "ProductsValue"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 Text(
@@ -227,7 +228,7 @@ class _CartState extends State<Cart> {
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 Text(
-                  "45.75 ريال",
+                  "45.75 " + getTranslated(context, "SR"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
               ],
@@ -238,11 +239,11 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "قيمة التوصيل",
+                  getTranslated(context, "deliveryValue"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 Text(
-                  "15.25 ريال",
+                  "15.25 " + getTranslated(context, "SR"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
               ],
@@ -253,7 +254,7 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "الضريبة",
+                  getTranslated(context, "Tax"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 Text(
@@ -261,7 +262,7 @@ class _CartState extends State<Cart> {
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
                 Text(
-                  "6.86 ريال",
+                  "6.86 " + getTranslated(context, "SR"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
               ],
@@ -272,11 +273,11 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "الاجمالي",
+                  getTranslated(context, "Total"),
                   style: TextStyle(fontSize: 20),
                 ),
                 Text(
-                  "67.86 ريال",
+                  "67.86 " + getTranslated(context, "SR"),
                   style: TextStyle(fontSize: 20),
                 ),
               ],
@@ -304,7 +305,8 @@ class _CartState extends State<Cart> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text("اضافة كود / كوبون", style: _titleTextStyle),
+                  Text(getTranslated(context, "AddCodeOrCoupon"),
+                      style: _titleTextStyle),
                 ],
               ),
             ),
@@ -343,13 +345,13 @@ class _CartState extends State<Cart> {
                       width: 10,
                     ),
                     Text(
-                      "رصيد متاح",
+                      getTranslated(context, "AvailableBalance"),
                       style: TextStyle(color: greenAppColor, fontSize: 20),
                     ),
                   ],
                 ),
                 Text(
-                  "7.86 ريال",
+                  "7.86 " + getTranslated(context, "SR"),
                   style: TextStyle(color: greenAppColor, fontSize: 20),
                 ),
               ],
@@ -373,8 +375,8 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "الموعد",
-                  style: TextStyle(color: greenAppColor, fontSize: 20),
+                  getTranslated(context, "Appointment"),
+                  style: TextStyle(color: greenAppColor, fontSize: 15),
                 ),
                 Row(
                   children: [
@@ -386,7 +388,7 @@ class _CartState extends State<Cart> {
                             alignLabelWithHint: false,
                             contentPadding: EdgeInsets.zero,
                             hintStyle: TextStyle(color: grey),
-                            hintText: "اليوم",
+                            hintText: getTranslated(context, "Day"),
                             border: OutlineInputBorder()),
                       ),
                     ),
@@ -401,7 +403,7 @@ class _CartState extends State<Cart> {
                             alignLabelWithHint: false,
                             contentPadding: EdgeInsets.zero,
                             hintStyle: TextStyle(color: grey),
-                            hintText: "الساعة",
+                            hintText: getTranslated(context, "Hour"),
                             border: OutlineInputBorder()),
                       ),
                     ),
@@ -417,7 +419,7 @@ class _CartState extends State<Cart> {
                       width: 10,
                     ),
                     Text(
-                      "فوري",
+                      getTranslated(context, "Fawrey"),
                       style: TextStyle(color: greenAppColor, fontSize: 20),
                     ),
                   ],
@@ -432,8 +434,8 @@ class _CartState extends State<Cart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "الموقع",
-                  style: TextStyle(color: greenAppColor, fontSize: 20),
+                  getTranslated(context, "Location"),
+                  style: TextStyle(color: greenAppColor, fontSize: 15),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 1.5,
@@ -458,5 +460,6 @@ class _CartState extends State<Cart> {
     );
   }
 }
+
 TextStyle _titleTextStyle =
     TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);

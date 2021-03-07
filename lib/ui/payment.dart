@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/order_status.dart';
@@ -22,7 +23,7 @@ class _PaymentState extends State<Payment> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "الدفع",
+          getTranslated(context, "Payment"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -54,11 +55,13 @@ class _PaymentState extends State<Payment> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("المبلغ المطلوب",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w100,
-                                    fontSize: 18,
-                                    color: whiteColor)),
+                            Text(
+                              getTranslated(context, "RequiredAmount"),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 18,
+                                  color: whiteColor),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -70,7 +73,7 @@ class _PaymentState extends State<Payment> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text("ريال",
+                                Text(getTranslated(context, "SR"),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 30,
@@ -91,11 +94,13 @@ class _PaymentState extends State<Payment> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("طريقة الدفع",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w100,
-                                      fontSize: 20,
-                                    )),
+                                Text(
+                                  getTranslated(context, "PaymentMethods"),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w100,
+                                    fontSize: 20,
+                                  ),
+                                ),
                                 Container(
                                   width: MediaQuery.of(context).size.width / 3,
                                   child: Row(
@@ -200,11 +205,13 @@ class _PaymentState extends State<Payment> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Text("الدفع عند الاستلام",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        fontSize: 20,
-                                      )),
+                                  Text(
+                                    getTranslated(context, "PayWhenReceiving"),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w100,
+                                      fontSize: 20,
+                                    ),
+                                  ),
                                 ],
                               ),
                               Icon(
@@ -227,7 +234,8 @@ class _PaymentState extends State<Payment> {
                             color: redColor,
                             borderRadius: BorderRadius.circular(5)),
                         alignment: Alignment.center,
-                        child: Text("اتمام عملية الشراء",
+                        child: Text(
+                            getTranslated(context, "CompleteThePurchase"),
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
                                 fontSize: 18,

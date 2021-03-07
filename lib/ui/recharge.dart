@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
+import 'package:gas/utils/global_vars.dart';
 
 class Recharge extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _RechargeState extends State<Recharge> {
             decoration: BoxDecoration(
                 color: greenAppColor, borderRadius: BorderRadius.circular(5)),
             alignment: Alignment.center,
-            child: Text("متابعة الشراء",
+            child: Text(getTranslated(context, "ContinuePayment"),
                 style: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 18,
@@ -48,11 +49,11 @@ class _RechargeState extends State<Recharge> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: greenAppColor)),
                         child: Text(
-                          "15.5 ر.س",
+                          "15.5 " + getTranslated(context, "Currency"),
                           style: TextStyle(color: greenAppColor),
                         ),
                       ),
@@ -77,7 +78,7 @@ class _RechargeState extends State<Recharge> {
                               alignment: Alignment.center,
                               width: MediaQuery.of(context).size.width,
                               child: Text(
-                                "اضافة",
+                                getTranslated(context, "Add"),
                                 style: TextStyle(fontWeight: FontWeight.w100),
                               ),
                             ),

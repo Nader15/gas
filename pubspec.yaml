@@ -48,7 +48,9 @@ flutter:
     - assets/langs/ar.json
 
   fonts:
-    - family: AraHamahHoms
+    - family: SourceSansPro
       fonts:
-        - asset: assets/fonts/AraHamahHoms-Regular-1.ttf
-          weight: 100
+        - asset: assets/fonts/SourceSansPro-SemiBold.ttf
+    - family: Almarai
+      fonts:
+        - asset: assets/fonts/Almarai-Regular.ttf

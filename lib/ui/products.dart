@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
+import 'package:gas/utils/global_vars.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -14,13 +15,14 @@ class _ProductsState extends State<Products> {
     return Scaffold(
         key: _key,
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(20.0),
           child: Container(
             height: 40,
             decoration: BoxDecoration(
                 color: redColor, borderRadius: BorderRadius.circular(5)),
             alignment: Alignment.center,
-            child: Text("متابعة حالة الطلب",
+            child: Text(
+                getTranslated(context, "OrderStatus"),
                 style: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 18,
@@ -48,11 +50,11 @@ class _ProductsState extends State<Products> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: greenAppColor)),
                         child: Text(
-                          "15.5 ر.س",
+                          "15.5 " + getTranslated(context, "Currency"),
                           style: TextStyle(color: greenAppColor),
                         ),
                       ),
@@ -77,7 +79,7 @@ class _ProductsState extends State<Products> {
                               alignment: Alignment.center,
                               width: MediaQuery.of(context).size.width,
                               child: Text(
-                                "اضافة",
+                                getTranslated(context, "Add"),
                                 style: TextStyle(fontWeight: FontWeight.w100),
                               ),
                             ),

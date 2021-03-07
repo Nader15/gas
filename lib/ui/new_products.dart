@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gas/utils/global_vars.dart';
 
 class NewProducts extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _NewProductsState extends State<NewProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      body: Center(child: Text("جديد")),
+      body: Center(child: Text(getTranslated(context, "New"))),
     );
   }
 }

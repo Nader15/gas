@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class MyWallet extends StatefulWidget {
@@ -18,7 +19,8 @@ class _MyWalletState extends State<MyWallet> {
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
-        title: Text("محفظتي", style: TextStyle(fontWeight: FontWeight.w100)),
+        title: Text(getTranslated(context, "MyWallet"),
+            style: TextStyle(fontWeight: FontWeight.w100)),
         actions: [
           IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
         ],
@@ -47,7 +49,7 @@ class _MyWalletState extends State<MyWallet> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "الرصيد",
+                            getTranslated(context, "YourBalance"),
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w100),
                           ),
@@ -70,7 +72,7 @@ class _MyWalletState extends State<MyWallet> {
                                   width: 10,
                                 ),
                                 Text(
-                                  "ريال",
+                                  getTranslated(context, "SR"),
                                   style: TextStyle(
                                       fontSize: 25,
                                       color: greenAppColor,
@@ -106,7 +108,7 @@ class _MyWalletState extends State<MyWallet> {
                                     width: 10,
                                   ),
                                   Text(
-                                    "اضافة رصيد",
+                                    getTranslated(context, "AddCredit"),
                                     style: TextStyle(
                                         color: greenAppColor,
                                         fontWeight: FontWeight.w100),
@@ -128,24 +130,23 @@ class _MyWalletState extends State<MyWallet> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "أكواد الخصم",
+                                getTranslated(context, "DiscountCodes"),
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w100),
                               ),
                               Text(
-                                "تاريخ الانتهاء",
+                                getTranslated(context, "ExpiryDate"),
                                 style: TextStyle(
                                     color: greenAppColor,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w100),
                               ),
                               Text(
-                                "القيمة",
+                                getTranslated(context, "Value"),
                                 style: TextStyle(
-                                  color: greenAppColor,
-                                  fontSize: 20
-                                    , fontWeight: FontWeight.w100
-                                ),
+                                    color: greenAppColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w100),
                               ),
                             ],
                           ),
@@ -220,7 +221,7 @@ class _MyWalletState extends State<MyWallet> {
                                     width: 10,
                                   ),
                                   Text(
-                                    "اضافة كود / كوبون",
+                                    getTranslated(context, "AddCodeOrCoupon"),
                                     style: TextStyle(
                                         color: greenAppColor,
                                         fontWeight: FontWeight.w100),
@@ -239,16 +240,19 @@ class _MyWalletState extends State<MyWallet> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "تبديل مجاني",
+                            getTranslated(context, "FreeExchange"),
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w100),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Text(
                             "أحصل علي تبديل مجاني للاسطوانة عند استبدال عدد 7 اسطوانات خلال عام واحد",
                             style: TextStyle(fontWeight: FontWeight.w100),
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           Center(
                             child: Row(
@@ -256,9 +260,9 @@ class _MyWalletState extends State<MyWallet> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "الرصيد",
+                                  "1/7",
                                   style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 40,
                                       color: greenAppColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -266,9 +270,9 @@ class _MyWalletState extends State<MyWallet> {
                                   width: 10,
                                 ),
                                 Text(
-                                  "1/7",
+                                  getTranslated(context, "Balance"),
                                   style: TextStyle(
-                                      fontSize: 40,
+                                      fontSize: 20,
                                       color: greenAppColor,
                                       fontWeight: FontWeight.bold),
                                 ),

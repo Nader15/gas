@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: "Gas Express",
       theme: ThemeData(
-        fontFamily: translator.currentLanguage == "ar" ? 'AraHamahHoms' : "Roboto",
+        fontFamily: translator.currentLanguage == "ar" ? 'Almarai' : "SourceSansPro",
       ),
       home: HomePage(),
       // home: MyAddresses(),

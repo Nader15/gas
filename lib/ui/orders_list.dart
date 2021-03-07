@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class OrdersList extends StatefulWidget {
@@ -20,7 +21,7 @@ class _OrdersListState extends State<OrdersList> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "الطلبات",
+          getTranslated(context, "Orders"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -45,7 +46,7 @@ class _OrdersListState extends State<OrdersList> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("طلب قائم",
+                    Text(getTranslated(context, "ExistingOrder"),
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
                           fontSize: 20,
@@ -63,7 +64,7 @@ class _OrdersListState extends State<OrdersList> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("رقم الطلب",
+                                Text(getTranslated(context, "OrderNumber"),
                                     style: TextStyle(
                                       fontWeight: FontWeight.w100,
                                       fontSize: 20,
@@ -80,13 +81,13 @@ class _OrdersListState extends State<OrdersList> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("حالة الطلب",
+                                Text(getTranslated(context, "OrderStatus2"),
                                     style: TextStyle(
                                       color: greenAppColor,
                                       fontWeight: FontWeight.w100,
                                       fontSize: 20,
                                     )),
-                                Text("الطلب مع السائق",
+                                Text(getTranslated(context, "OrderWithDriver"),
                                     style: TextStyle(
                                       color: redColor,
                                       fontSize: 25,
@@ -107,7 +108,9 @@ class _OrdersListState extends State<OrdersList> {
                                         color: greenAppColor,
                                         borderRadius: BorderRadius.circular(5)),
                                     alignment: Alignment.center,
-                                    child: Text("تفاصيل الفاتورة",
+                                    child: Text(
+                                        getTranslated(
+                                            context, "InvoiceDetails"),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
                                             fontSize: 18,
@@ -126,7 +129,8 @@ class _OrdersListState extends State<OrdersList> {
                                             border:
                                                 Border.all(color: Colors.blue)),
                                         alignment: Alignment.center,
-                                        child: Text("تعديل الطلب",
+                                        child: Text(
+                                            getTranslated(context, "EditOrder"),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w100,
                                                 fontSize: 18,
@@ -136,16 +140,22 @@ class _OrdersListState extends State<OrdersList> {
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Icon(
-                                      Icons.delete_forever,
-                                      color: redColor,
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Icon(
+                                        Icons.delete_forever,
+                                        color: redColor,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Icon(
-                                      Icons.alternate_email,
-                                      color: Colors.blue,
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Icon(
+                                        Icons.alternate_email,
+                                        color: Colors.blue,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -158,7 +168,7 @@ class _OrdersListState extends State<OrdersList> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text("طلبات سابقة",
+                    Text(getTranslated(context, "PreviousOrders"),
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
                           fontSize: 20,
@@ -179,22 +189,22 @@ class _OrdersListState extends State<OrdersList> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("الرقم",
+                                  Text(getTranslated(context, "Number"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 18,
                                       )),
-                                  Text("التاريخ",
+                                  Text(getTranslated(context, "Date"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 18,
                                       )),
-                                  Text("الحالة",
+                                  Text(getTranslated(context, "Status"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 18,
                                       )),
-                                  Text("القيمة",
+                                  Text(getTranslated(context, "Value"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: 18,
@@ -252,7 +262,10 @@ class _OrdersListState extends State<OrdersList> {
                         fontWeight: FontWeight.w100,
                         fontSize: 18,
                       )),
-                  Text(status == true ? "تم الاستلام" : "ملغي",
+                  Text(
+                      status == true
+                          ? getTranslated(context, "Received")
+                          : getTranslated(context, "Canceled"),
                       style: TextStyle(
                         color: status == true ? greenAppColor : redColor,
                         fontWeight: FontWeight.w100,
@@ -273,7 +286,7 @@ class _OrdersListState extends State<OrdersList> {
                 color: status == true ? greenAppColor : redColor,
               ),
               child: Text(
-                "التفاصيل",
+                getTranslated(context, "Details"),
                 style: TextStyle(color: whiteColor),
               ),
             )

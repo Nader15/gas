@@ -6,6 +6,7 @@ import 'package:gas/utils/custom_widgets/drawer.dart';
 import 'package:gas/ui/products.dart';
 import 'package:gas/ui/new_products.dart';
 import 'package:gas/ui/recharge.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,6 +31,10 @@ class _HomePageState extends State<HomePage> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
+            title: Text(
+              getTranslated(context, "TheProducts"),
+              style: TextStyle(fontWeight: FontWeight.w100),
+            ),
             actions: [
               IconButton(
                   icon: Icon(Icons.shopping_cart),
@@ -56,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       height: 70,
                       child: Tab(
-                        text: "اعادة تعبئة",
+                        text: getTranslated(context, "Recharge"),
                         icon: Image.asset(
                           "assets/images/rechrge_tube.png",
                           width: 20,
@@ -70,13 +75,13 @@ class _HomePageState extends State<HomePage> {
                           "assets/images/new_tube.png",
                           width: 30,
                         ),
-                        text: "جديد",
+                        text: getTranslated(context, "New"),
                       ),
                     ),
                     Container(
                       height: 70,
                       child: Tab(
-                        text: "منتجات",
+                        text: getTranslated(context, "Products"),
                         icon: Image.asset(
                           "assets/images/products.png",
                           width: 30,
@@ -86,10 +91,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            ),
-            title: Text(
-              "المنتجات",
-              style: TextStyle(fontWeight: FontWeight.w100),
             ),
           ),
           body: TabBarView(

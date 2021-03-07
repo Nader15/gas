@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class Notifications extends StatefulWidget {
@@ -20,7 +21,7 @@ class _NotificationsState extends State<Notifications> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "التنبيهات",
+          getTranslated(context, "Notifications"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -51,7 +52,7 @@ class _NotificationsState extends State<Notifications> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "عنوان التنبية",
+                            getTranslated(context, "AlertTitle"),
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w100),
                           ),
@@ -68,7 +69,7 @@ class _NotificationsState extends State<Notifications> {
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    "حذف",
+                                    getTranslated(context, "Delete"),
                                     style: TextStyle(
                                         color: greenAppColor,
                                         fontWeight: FontWeight.w100),
@@ -87,7 +88,7 @@ class _NotificationsState extends State<Notifications> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "عنوان التنبية",
+                            getTranslated(context, "AlertTitle"),
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w100),
                           ),
@@ -107,7 +108,7 @@ class _NotificationsState extends State<Notifications> {
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    "حذف",
+                                    getTranslated(context, "Delete"),
                                     style: TextStyle(
                                         color: greenAppColor,
                                         fontWeight: FontWeight.bold),
@@ -126,7 +127,7 @@ class _NotificationsState extends State<Notifications> {
                       TextButton(
                           onPressed: () {},
                           child: Text(
-                            "مسح الكل",
+                            getTranslated(context, "DeleteAll"),
                             style: TextStyle(
                                 color: greenAppColor,
                                 fontWeight: FontWeight.w100),
@@ -134,7 +135,7 @@ class _NotificationsState extends State<Notifications> {
                       TextButton(
                           onPressed: () {},
                           child: Text(
-                            "مسح المحدد",
+                            getTranslated(context, "DeleteSelected"),
                             style: TextStyle(
                                 color: greenAppColor,
                                 fontWeight: FontWeight.w100),

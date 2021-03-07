@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gas/ui/home_page.dart';
 import 'package:gas/utils/colors_file.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:gas/ui/my_addresses.dart';
 import 'package:gas/ui/my_wallet.dart';
@@ -32,7 +33,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                translator.translate('appTitle'),
+                getTranslated(context, 'HomePage'),
                 style: _textStyle,
               ),
               onTap: () {
@@ -45,7 +46,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "عناويني",
+                getTranslated(context, 'MyAddresses'),
                 style: _textStyle,
               ),
               onTap: () {
@@ -58,7 +59,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "محفظتي",
+                getTranslated(context, 'MyWallet'),
                 style: _textStyle,
               ),
               onTap: () {
@@ -71,7 +72,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "التنبيهات",
+                getTranslated(context, 'Notifications'),
                 style: _textStyle,
               ),
               onTap: () {
@@ -85,7 +86,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "الاعدادات",
+                getTranslated(context, 'Settings'),
                 style: _textStyle,
               ),
               onTap: () {},
@@ -96,7 +97,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "أتصل بنا",
+                getTranslated(context, 'ContactUs'),
                 style: _textStyle,
               ),
               onTap: () {},
@@ -107,7 +108,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "مشاركة التطبيق",
+                getTranslated(context, 'ShareApp'),
                 style: _textStyle,
               ),
               onTap: () {},
@@ -118,7 +119,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                translator.translate('changeLanguage'),
+                getTranslated(context, 'changeLanguage'),
                 style: _textStyle,
               ),
               onTap: () {
@@ -137,7 +138,7 @@ class drawerList extends StatelessWidget {
                 color: blackColor.withOpacity(0.6),
               ),
               title: Text(
-                "تسجيل خروج",
+                getTranslated(context, 'logOut'),
                 style: _textStyle,
               ),
               onTap: () {},
@@ -150,4 +151,4 @@ class drawerList extends StatelessWidget {
 }
 
 TextStyle _textStyle =
-    TextStyle(color: whiteColor, fontSize: 24, fontWeight: FontWeight.w100);
+    TextStyle(color: whiteColor, fontSize: 22);

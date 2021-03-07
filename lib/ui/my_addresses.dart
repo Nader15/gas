@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class MyAddresses extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MyAddressesState extends State<MyAddresses> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          "عناويني",
+          getTranslated(context, "MyAddresses"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -72,7 +73,10 @@ class _MyAddressesState extends State<MyAddresses> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text("اضافة عنوان", style: _titleTextStyle),
+                  Text(
+                    getTranslated(context, "AddAddress"),
+                    style: _titleTextStyle,
+                  ),
                 ],
               ))
         ],
@@ -103,7 +107,10 @@ class _MyAddressesState extends State<MyAddresses> {
                       width: 10,
                     ),
                     defaultAddress == true
-                        ? Text("(الافتراضي)", style: _titleTextStyle)
+                        ? Text(
+                            "(${getTranslated(context, "Default")})",
+                            style: _titleTextStyle,
+                          )
                         : Container(),
                   ],
                 ),
@@ -114,7 +121,11 @@ class _MyAddressesState extends State<MyAddresses> {
                             defaultAddress = !defaultAddress;
                           });
                         },
-                        child: Text("تعيين كأفتراضي", style: _titleTextStyle))
+                        child: Text(
+                          getTranslated(context, "MakeDefault"),
+                          style: _titleTextStyle,
+                        ),
+                      )
                     : Container()
               ],
             ),
@@ -133,7 +144,10 @@ class _MyAddressesState extends State<MyAddresses> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text("تعديل", style: _bttnTextStyle),
+                  child: Text(
+                    getTranslated(context, "Edit"),
+                    style: _bttnTextStyle,
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -141,7 +155,7 @@ class _MyAddressesState extends State<MyAddresses> {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    "حذف",
+                    getTranslated(context, "Delete"),
                     style: _bttnTextStyle,
                   ),
                 ),
