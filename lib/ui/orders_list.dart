@@ -90,7 +90,7 @@ class _OrdersListState extends State<OrdersList> {
                                 Text(getTranslated(context, "OrderWithDriver"),
                                     style: TextStyle(
                                       color: redColor,
-                                      fontSize: 25,
+                                      fontSize: 20,
                                     )),
                               ],
                             ),
@@ -113,7 +113,7 @@ class _OrdersListState extends State<OrdersList> {
                                             context, "InvoiceDetails"),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
-                                            fontSize: 18,
+                                            fontSize: 13,
                                             color: whiteColor)),
                                   ),
                                 ),
@@ -133,7 +133,7 @@ class _OrdersListState extends State<OrdersList> {
                                             getTranslated(context, "EditOrder"),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w100,
-                                                fontSize: 18,
+                                                fontSize: 13,
                                                 color: Colors.blue)),
                                       ),
                                     ),
@@ -179,12 +179,12 @@ class _OrdersListState extends State<OrdersList> {
                     Card(
                       elevation: 10,
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: MediaQuery.of(context).size.width / 1.7,
+                              width: MediaQuery.of(context).size.width / 1.6,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -192,22 +192,22 @@ class _OrdersListState extends State<OrdersList> {
                                   Text(getTranslated(context, "Number"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 18,
+                                        fontSize: 15,
                                       )),
                                   Text(getTranslated(context, "Date"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 18,
+                                        fontSize: 15,
                                       )),
                                   Text(getTranslated(context, "Status"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 18,
+                                        fontSize: 15,
                                       )),
                                   Text(getTranslated(context, "Value"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 18,
+                                        fontSize: 15,
                                       )),
                                 ],
                               ),
@@ -254,13 +254,13 @@ class _OrdersListState extends State<OrdersList> {
                       style: TextStyle(
                         color: status == true ? greenAppColor : redColor,
                         fontWeight: FontWeight.w100,
-                        fontSize: 18,
+                        fontSize: 15,
                       )),
                   Text("1/2/2022",
                       style: TextStyle(
                         color: status == true ? greenAppColor : redColor,
                         fontWeight: FontWeight.w100,
-                        fontSize: 18,
+                        fontSize: 15,
                       )),
                   Text(
                       status == true
@@ -269,13 +269,13 @@ class _OrdersListState extends State<OrdersList> {
                       style: TextStyle(
                         color: status == true ? greenAppColor : redColor,
                         fontWeight: FontWeight.w100,
-                        fontSize: 18,
+                        fontSize: 15,
                       )),
                   Text("45",
                       style: TextStyle(
                         color: status == true ? greenAppColor : redColor,
                         fontWeight: FontWeight.w100,
-                        fontSize: 18,
+                        fontSize: 15,
                       )),
                 ],
               ),

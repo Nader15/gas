@@ -53,7 +53,7 @@ class _CartState extends State<Cart> {
                 child: Text(getTranslated(context, "CompleteThePurchase"),
                     style: TextStyle(
                         fontWeight: FontWeight.w100,
-                        fontSize: 18,
+                        fontSize: 15,
                         color: whiteColor)),
               ),
             ),
@@ -381,7 +381,7 @@ class _CartState extends State<Cart> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 80,
+                      width: MediaQuery.of(context).size.width / 5,
                       height: 30,
                       child: TextFormField(
                         decoration: InputDecoration(
@@ -396,7 +396,7 @@ class _CartState extends State<Cart> {
                       width: 10,
                     ),
                     SizedBox(
-                      width: 80,
+                      width: MediaQuery.of(context).size.width / 5,
                       height: 30,
                       child: TextFormField(
                         decoration: InputDecoration(
@@ -409,20 +409,9 @@ class _CartState extends State<Cart> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.library_add_check_outlined,
-                      color: greenAppColor,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      getTranslated(context, "Fawrey"),
-                      style: TextStyle(color: greenAppColor, fontSize: 20),
-                    ),
-                  ],
+                Icon(
+                  Icons.library_add_check_outlined,
+                  color: greenAppColor,
                 ),
               ],
             ),
@@ -438,7 +427,7 @@ class _CartState extends State<Cart> {
                   style: TextStyle(color: greenAppColor, fontSize: 15),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.5,
+                  width: MediaQuery.of(context).size.width / 1.7,
                   height: 30,
                   child: TextFormField(
                     decoration: InputDecoration(

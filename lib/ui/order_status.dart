@@ -66,6 +66,9 @@ class _OrderStatusState extends State<OrderStatus> {
                                       fontWeight: FontWeight.w100,
                                       fontSize: 18,
                                       color: whiteColor)),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Center(
                                 child: Text(
                                     getTranslated(context, "OrderWithDriver"),
@@ -163,7 +166,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                             context, "InvoiceDetails"),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w100,
-                                            fontSize: 18,
+                                            fontSize: 12,
                                             color: whiteColor)),
                                   ),
                                 ),
@@ -183,7 +186,7 @@ class _OrderStatusState extends State<OrderStatus> {
                                             getTranslated(context, "EditOrder"),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w100,
-                                                fontSize: 18,
+                                                fontSize: 12,
                                                 color: Colors.blue)),
                                       ),
                                     ),

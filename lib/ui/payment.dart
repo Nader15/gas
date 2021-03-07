@@ -102,7 +102,7 @@ class _PaymentState extends State<Payment> {
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width / 3,
+                                  // width: MediaQuery.of(context).size.width / 4,
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -133,7 +133,7 @@ class _PaymentState extends State<Payment> {
                                     decoration: InputDecoration(
                                         // contentPadding: EdgeInsets.zero,
                                         prefixIcon: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(10.0),
                                           child: Image.asset(
                                             "assets/images/wallet.png",
                                             width: 30,
@@ -145,7 +145,7 @@ class _PaymentState extends State<Payment> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 4,
+                                  width: MediaQuery.of(context).size.width / 5,
                                   child: TextFormField(
                                     decoration: InputDecoration(
                                         // contentPadding: EdgeInsets.zero,
@@ -160,7 +160,7 @@ class _PaymentState extends State<Payment> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 4,
+                                  width: MediaQuery.of(context).size.width / 6,
                                   child: TextFormField(
                                     decoration: InputDecoration(
                                         // contentPadding: EdgeInsets.zero,
