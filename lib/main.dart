@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/splash.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/my_addresses.dart';
 
@@ -35,8 +36,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: translator.currentLanguage == "ar" ? 'Almarai' : "SourceSansPro",
       ),
-      home: HomePage(),
-      // home: MyAddresses(),
+      // home: HomePage(),
+      home: Splash(),
       localizationsDelegates: translator.delegates,
       // Android + iOS Delegates
       locale: translator.locale,
