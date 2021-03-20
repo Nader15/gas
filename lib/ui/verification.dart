@@ -31,7 +31,7 @@ class _SplashState extends State<Verify> {
                     children: [
                       SizedBox(height: 69),
                       SizedBox(height: 47),
-                      Text("VERIFICATION CODE",
+                      Text("كود التفعيل",
                           style:
                               TextStyle(color: primaryAppColor, fontSize: 27)),
                       SizedBox(height: 50),
@@ -50,9 +50,8 @@ class _SplashState extends State<Verify> {
                         padding: const EdgeInsets.only(
                             bottom: 18, top: 41, left: 23, right: 23),
                         child: CustomButton(
-                            bttnName: 'Active',
+                            bttnName: 'تفعيل',
                             bttnHeight: 55,
-                            bttnWidth: 368,
                             bttnNameSize: 20,
                             onPress: () {
                               navigateAndKeepStack(context, HomePage());
@@ -63,15 +62,16 @@ class _SplashState extends State<Verify> {
                               //     });
                             }),
                       ),
-                      Text.rich(
-                        TextSpan(
-                          text: "Send Code Again",
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "اعادة ارسال الكود",
                           style: TextStyle(
-                              color: primaryAppColor,
-                              fontSize: 14,
-                              decoration: TextDecoration.underline),
+                            color: primaryAppColor,
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -95,9 +95,9 @@ class _SplashState extends State<Verify> {
             borderRadius: BorderRadius.circular(5)),
         child: TextFormField(
           keyboardType: TextInputType.number,
-          style: TextStyle(color: whiteColor),
+          style: TextStyle(color: primaryAppColor,fontSize: 25),
           cursorColor: primaryAppColor,
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
               border: InputBorder.none,
               hintText: '0',
               hintStyle: TextStyle(color: blackColor, fontSize: 23)),
