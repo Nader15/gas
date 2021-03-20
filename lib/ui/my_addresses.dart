@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gas/ui/add_address.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
 import 'package:gas/utils/global_vars.dart';
+import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class MyAddresses extends StatefulWidget {
@@ -52,7 +54,9 @@ class _MyAddressesState extends State<MyAddresses> {
             height: 20,
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateAndKeepStack(context, AddAddress());
+              },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

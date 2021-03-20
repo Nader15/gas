@@ -49,7 +49,7 @@ class _SplashState extends State<Verify> {
                     SizedBox(height: 50),
                     Center(
                       child: VerificationCodeInput(
-                        validation: validatePhone,
+                        // validation: validatePhone,
                         keyboardType: TextInputType.number,
                         length: 4,
                         autofocus: false,
