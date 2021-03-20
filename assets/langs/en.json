@@ -73,5 +73,7 @@
   "Date": "Date",
   "Details": "Details",
   "Received": "Received",
-  "Canceled": "Canceled"
+  "Canceled": "Canceled",
+
+  "Login": "Login"
 }
