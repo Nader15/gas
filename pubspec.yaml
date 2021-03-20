@@ -20,7 +20,7 @@ dependencies:
   flutter_svg: ^0.19.0
   dotted_border: ^1.0.7
   xs_progress_hud: ^1.0.2
-  fluttertoast:
+#  fluttertoast:
 dev_dependencies:
   flutter_test:
     sdk: flutter

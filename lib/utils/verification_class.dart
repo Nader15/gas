@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:gas/utils/colors_file.dart';
 
 class VerificationCodeInput extends StatefulWidget {
+  final FormFieldValidator<String> validation;
   final ValueChanged<String> onCompleted;
   final TextInputType keyboardType;
   final int length;
@@ -12,6 +13,7 @@ class VerificationCodeInput extends StatefulWidget {
   final bool autofocus;
   VerificationCodeInput(
       {Key key,
+        this.validation,
         this.onCompleted,
         this.keyboardType = TextInputType.number,
         this.length = 4,
@@ -60,7 +62,9 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
 
   Widget _buildInputItem(int index) {
     bool border = (widget.itemDecoration == null);
-    return TextField(
+    return TextFormField(
+      validator: widget.validation,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: widget.keyboardType,
       maxLines: 1,
       maxLength: 2,
@@ -168,4 +172,5 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
           children: _buildListWidget(),
         ));
   }
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
 }

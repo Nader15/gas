@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 
- import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:xs_progress_hud/xs_progress_hud.dart';
 

@@ -12,7 +12,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _autoValidate = false;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  var phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +46,12 @@ class _LoginState extends State<Login> {
               children: [
                 Text("ادخل رقم الجوال الخاص بك للدخول"),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height/8,
+                  height: MediaQuery.of(context).size.height / 8,
                 ),
                 TextFormField(
+                  controller: phoneController,
+                  validator: validatePhone,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.phone,
                   cursorColor: grey,
                   decoration: InputDecoration(
@@ -70,7 +75,10 @@ class _LoginState extends State<Login> {
                         onPrimary: Colors.white, // foreground
                       ),
                       onPressed: () {
-                        navigateAndKeepStack(context, Verify());
+                        _validateInputs();
+                        if (_key.currentState.validate()) {
+                          navigateAndKeepStack(context, Verify());
+                        }
                       },
                       child: Text("تسجيل دخول")),
                 ))
@@ -80,5 +88,24 @@ class _LoginState extends State<Login> {
         ],
       )),
     );
+  }
+
+  void _validateInputs() {
+    if (_key.currentState.validate()) {
+      _key.currentState.save();
+    } else {
+      setState(() {
+        _autoValidate = true;
+      });
+    }
+  }
+
+  String validatePhone(String value) {
+    if (value.length == 0)
+      return "*أدخل رقم الجوال";
+    else if (value.length < 11)
+      return '*أدخل رقم جوال صحيح';
+    else
+      return null;
   }
 }

@@ -7,7 +7,7 @@ import 'package:localize_and_translate/localize_and_translate.dart';
 // int Id = 0;
 
 
-String Tocken;
+String Token;
 
 String getTranslated(BuildContext context, String key) {
   return translator.translate(key);
