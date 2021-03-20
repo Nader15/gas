@@ -9,10 +9,17 @@ import 'package:xs_progress_hud/xs_progress_hud.dart';
 class Api {
   BuildContext context;
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-
   Api(this.context, this.scaffoldKey);
 
-  String baseUrl = 'https://www.ictv.net/api/';
+   String baseUrl = 'http://18.188.206.243:8001/api/';
+   String products = "Products";
+   String forgetPassword = "ForgetPassword";
+   String verifyCode = "VerifyCode";
+   String customersAddresses = "CustomersAddresses";
+   String basket = "basket";
+   String orders = "Orders";
+   String orderStatusDetails = "OrderStatusDetails";
+   String checkCoupon = "check_coupon";
 
   Future<dynamic> getProducts() async {
     String url = "";
