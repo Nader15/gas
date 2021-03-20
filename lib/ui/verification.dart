@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/ui/home_page.dart';
+import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/utils/verification_class.dart';
 import 'dart:async';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_button.dart';
@@ -12,9 +13,24 @@ class Verify extends StatefulWidget {
 }
 
 class _SplashState extends State<Verify> {
+  String _onCompleted = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: blackColor,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Stack(
         children: <Widget>[
           Center(
@@ -36,16 +52,28 @@ class _SplashState extends State<Verify> {
                               TextStyle(color: primaryAppColor, fontSize: 27)),
                       SizedBox(height: 50),
                       Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            verfyCode(),
-                            verfyCode(),
-                            verfyCode(),
-                            verfyCode(),
-                          ],
+                        child: VerificationCodeInput(
+                          keyboardType: TextInputType.number,
+                          length: 4,
+                          autofocus: false,
+                          onCompleted: (String value) {
+                            print(value);
+                            setState(() {
+                              _onCompleted = value;
+                            });
+                          },
                         ),
                       ),
+                      // _onCompleted != ""
+                      //     ? Padding(
+                      //         padding: const EdgeInsets.all(8.0),
+                      //         child: Center(
+                      //           child: Text(
+                      //             'الكود : $_onCompleted',
+                      //           ),
+                      //         ),
+                      //       )
+                      //     : Container(),
                       Padding(
                         padding: const EdgeInsets.only(
                             bottom: 18, top: 41, left: 23, right: 23),
@@ -55,11 +83,7 @@ class _SplashState extends State<Verify> {
                             bttnNameSize: 20,
                             onPress: () {
                               navigateAndKeepStack(context, HomePage());
-                              // showDialog(
-                              //     context: context,
-                              //     builder: (BuildContext context) {
-                              //       return SignUpAlert();
-                              //     });
+                              ;
                             }),
                       ),
                       TextButton(
@@ -79,29 +103,6 @@ class _SplashState extends State<Verify> {
             ],
           ))
         ],
-      ),
-    );
-  }
-
-  Padding verfyCode() {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Container(
-        height: 55,
-        width: 60,
-        padding: EdgeInsets.only(left: 25, right: 15),
-        decoration: BoxDecoration(
-            color: greyPrimaryColor.withOpacity(.5),
-            borderRadius: BorderRadius.circular(5)),
-        child: TextFormField(
-          keyboardType: TextInputType.number,
-          style: TextStyle(color: primaryAppColor,fontSize: 25),
-          cursorColor: primaryAppColor,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: '0',
-              hintStyle: TextStyle(color: blackColor, fontSize: 23)),
-        ),
       ),
     );
   }
