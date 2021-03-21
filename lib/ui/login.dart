@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gas/APiFunctions/Api.dart';
 import 'package:gas/ui/home_page.dart';
 import 'package:gas/ui/verification.dart';
 import 'package:gas/utils/colors_file.dart';
@@ -15,10 +16,12 @@ class _LoginState extends State<Login> {
   bool _autoValidate = false;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   var phoneController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -48,20 +51,33 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 8,
                 ),
-                TextFormField(
-                  controller: phoneController,
-                  validator: validatePhone,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  keyboardType: TextInputType.phone,
-                  cursorColor: grey,
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: grey)),
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: grey)),
-                    labelText: "رقم الجوال",
-                    labelStyle: TextStyle(color: grey),
-                  ),
+                Row(
+                  children: [
+                    Container(alignment: Alignment.centerLeft,
+                        child: Text("+966")),
+                    SizedBox(width: 6,),
+                    Container(
+                  width:     MediaQuery.of(context).size.width/1.4,
+
+                      child: TextFormField(
+                        controller: phoneController,
+                        validator: validatePhone,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        keyboardType: TextInputType.phone,
+
+                        cursorColor: grey,
+                        decoration: InputDecoration(
+
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: grey)),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: grey)),
+                          labelText: "رقم الجوال",
+                          labelStyle: TextStyle(color: grey),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 50,
@@ -77,7 +93,12 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         _validateInputs();
                         if (_key.currentState.validate()) {
-                          navigateAndKeepStack(context, Verify());
+                          Api(context, _scaffoldKey).loginFunc(phoneController.text).then((value) {
+                            if(value){
+                              navigateAndKeepStack(context, Verify(phoneController.text));
+
+                            }
+                          });
                         }
                       },
                       child: Text("تسجيل دخول")),
@@ -103,7 +124,7 @@ class _LoginState extends State<Login> {
   String validatePhone(String value) {
     if (value.length == 0)
       return "*أدخل رقم الجوال";
-    else if (value.length < 11)
+    else if (value.length < 9)
       return '*أدخل رقم جوال صحيح';
     else
       return null;

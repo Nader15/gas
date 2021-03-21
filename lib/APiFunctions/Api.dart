@@ -24,17 +24,18 @@ class Api {
   String checkCoupon = "check_coupon";
 
 
-  Future loginFunc(String password,) async {
+  Future loginFunc(String phone,) async {
     XsProgressHud.show(context);
 
     final String completeUrl = baseUrl + forgetPassword;
 
     var response = await http.post(completeUrl, body: {
-      "password": password
-    }, headers: {
-      HttpHeaders.authorizationHeader: Token,
-    });
+      "telephoneno": "+966"+phone
+    },);
     print("PhoneBody ${response.body}");
+    print("PhoneBody ${{
+      "telephoneno": "+966"+phone
+    }}");
     print("PhoneBody ${response.statusCode}");
     if (response.statusCode == 200) {
       if (!response.body.contains("error")) {
@@ -55,11 +56,12 @@ class Api {
     }
   }
 
-  Future verifyCodeApi(GlobalKey<ScaffoldState> _scaffoldKey) async {
+  Future verifyCodeApi(String code,String phone) async {
     XsProgressHud.show(context);
     final String completeUrl = baseUrl + verifyCode;
     var data = {
-      "code": "12321"
+      "validationCode": code,
+      "telephoneno":"966"+ phone
     };
     var userToJson = json.encode(data);
     final response = await http.post(

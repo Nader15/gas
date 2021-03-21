@@ -1,18 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gas/APiFunctions/Api.dart';
 import 'package:gas/ui/home_page.dart';
-import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/utils/verification_class.dart';
-import 'dart:async';
+ import 'dart:async';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_button.dart';
 import 'package:gas/utils/navigator.dart';
+import 'package:gas/utils/verification_class.dart';
 
 class Verify extends StatefulWidget {
+  String phone;
+
+  Verify(this.phone);
+
   @override
   _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Verify> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   bool _autoValidate = false;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   var phoneController = TextEditingController();
@@ -49,6 +56,7 @@ class _SplashState extends State<Verify> {
                     SizedBox(height: 50),
                     Center(
                       child: VerificationCodeInput(
+
                         // validation: validatePhone,
                         keyboardType: TextInputType.number,
                         length: 4,
@@ -81,20 +89,26 @@ class _SplashState extends State<Verify> {
                           onPress: () {
                             _validateInputs();
                             if (_key.currentState.validate()) {
-                              navigateAndKeepStack(context, HomePage());
+
+                              Api(context, _scaffoldKey).verifyCodeApi(_onCompleted,phoneController.text).then((value) {
+                                if(value){
+                                  navigateAndKeepStack(context, HomePage());
+
+                                }
+                              });
                             }
                           }),
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "اعادة ارسال الكود",
-                        style: TextStyle(
-                          color: primaryAppColor,
-                          fontSize: 14,
-                        ),
-                      ),
-                    )
+                    // TextButton(
+                    //   onPressed: () {},
+                    //   child: Text(
+                    //     "اعادة ارسال الكود",
+                    //     style: TextStyle(
+                    //       color: primaryAppColor,
+                    //       fontSize: 14,
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),
