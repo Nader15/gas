@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';

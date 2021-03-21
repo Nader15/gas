@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/ui/splash.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/my_addresses.dart';

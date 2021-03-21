@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
-// String baseUrl = "https://test.ictv.net/api/";
-// String UserName = "";
-// String UserEmail = "";
-// int Id = 0;
+
+String imageUrl = 'http://18.188.206.243:8001';
 
 
-String Token;
 
 String getTranslated(BuildContext context, String key) {
   return translator.translate(key);

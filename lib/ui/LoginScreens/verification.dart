@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/Api.dart';
 import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
 import 'package:gas/ui/LoginScreens/UserModel.dart';
-import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/HomeScreens/home_page.dart';
  import 'dart:async';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_button.dart';

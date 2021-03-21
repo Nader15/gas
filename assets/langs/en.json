@@ -57,6 +57,7 @@
   "RequiredAmount": "Required Amount",
   "PaymentMethods": "Payment Methods",
   "PayWhenReceiving": "Pay When Receiving",
+  "noDataFound": "No Data Found",
 
   "OrderStatus2": "Order Status",
   "OrderWithDriver": "Order With Driver",

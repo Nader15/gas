@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gas/ui/HomeScreens/products.dart';
+import 'package:gas/ui/HomeScreens/recharge.dart';
 import 'package:gas/ui/cart.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
-import 'package:gas/ui/products.dart';
-import 'package:gas/ui/new_products.dart';
-import 'package:gas/ui/recharge.dart';
-import 'package:gas/utils/global_vars.dart';
+ import 'package:gas/ui/HomeScreens/new_products.dart';
+ import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 
 class HomePage extends StatefulWidget {

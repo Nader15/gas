@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
-import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/ui/LoginScreens/login.dart';
 import 'package:gas/ui/on_boarding.dart';
 import 'package:gas/utils/navigator.dart';

@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
+import 'package:gas/ui/HomeScreens/ProductsModel.dart';
 import 'package:gas/ui/LoginScreens/UserModel.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/toast.dart';
@@ -101,14 +103,16 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
     );
     print("ResponseInfo ${json.decode(response.body)}");
+    print("ResponseInfo ${completeUrl}");
+    print("ResponseInfo ${BaseToken}");
     XsProgressHud.hide();
 
     if (response.statusCode == 200) {
-      // return EventDetailsModel.fromJson(json.decode(response.body));
+      return ProductsModel.fromJson(json.decode(response.body));
       // return EventDetailsModel.fromJson(json.decode(response.body));
 
     } else {
@@ -126,7 +130,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
     );
     XsProgressHud.hide();
@@ -154,7 +158,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
       body: userToJson,
     );
@@ -187,7 +191,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
       body: userToJson,
     );
@@ -220,7 +224,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
       body: userToJson,
     );
@@ -253,7 +257,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
       body: userToJson,
     );
@@ -285,7 +289,7 @@ print(userToJson);
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        HttpHeaders.authorizationHeader: BaseToken
       },
       body: userToJson,
     );

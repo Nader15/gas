@@ -14,7 +14,7 @@ class _NewProductsState extends State<NewProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      body: Center(child: Text(getTranslated(context, "New"))),
+      body: Center(child: Text(getTranslated(context, "noDataFound"))),
     );
   }
 }

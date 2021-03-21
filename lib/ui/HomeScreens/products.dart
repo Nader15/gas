@@ -1,37 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:gas/APiFunctions/Api.dart';
+import 'package:gas/ui/HomeScreens/ProductsModel.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/global_vars.dart';
+import 'package:localize_and_translate/localize_and_translate.dart';
 
-class Recharge extends StatefulWidget {
+class Products extends StatefulWidget {
   @override
-  _RechargeState createState() => _RechargeState();
+  _ProductsState createState() => _ProductsState();
 }
 
-class _RechargeState extends State<Recharge> {
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+class _ProductsState extends State<Products> {
+   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+   ProductsModel productsModel;
+   List<ProductItem> productsList=List();
+  @override
+  void initState() {
+    // TODO: implement initState
 
+  super.initState();
+  Future.delayed( Duration(milliseconds: 0), () {
+    getProducts();
+  });
+    super.initState();
+  }
+  getProducts(){
+  Api(context, _scaffoldKey).getProducts().then((value) {
+
+    productsModel=value;
+    productsModel.results.forEach((element) {
+setState(() {
+  productsList.add(element);
+
+});
+    });
+  });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(20.0),
           child: Container(
             height: 40,
             decoration: BoxDecoration(
-                color: greenAppColor, borderRadius: BorderRadius.circular(5)),
+                color: redColor, borderRadius: BorderRadius.circular(5)),
             alignment: Alignment.center,
-            child: Text(getTranslated(context, "ContinuePayment"),
+            child: Text(
+                getTranslated(context, "OrderStatus"),
                 style: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 18,
                     color: whiteColor)),
           ),
         ),
-        key: _key,
         body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: GridView.builder(
-            itemCount: 2,
+            itemCount: productsList.length,
             physics: ScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,21 +80,25 @@ class _RechargeState extends State<Recharge> {
                         decoration: BoxDecoration(
                             border: Border.all(color: greenAppColor)),
                         child: Text(
-                          "15.5 " + getTranslated(context, "Currency"),
+                          " ${productsList[index].unitprice} " + getTranslated(context, "Currency"),
+                          // "15.5 " + getTranslated(context, "Currency"),
                           style: TextStyle(color: greenAppColor),
                         ),
                       ),
                       Center(
-                        child: Image.asset(
+                        child:
+                        productsList[index].imageurl==null||productsList[index].imageurl.isEmpty?
+                        Image.asset(
                           "assets/images/tube.png",
                           width: 90,
-                        ),
+                        ):Image.network(imageUrl+productsList[index].photoUrl,height: 150,),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("منظم غاز 50 مل بار"),
+                          Text(translator.currentLanguage=='ar'?productsList[index].productnameAr:"${productsList[index].productnameEn}"),
+                          // Text("منظم غاز 50 مل بار"),
                           ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(

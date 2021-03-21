@@ -1,7 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gas/ui/home_page.dart';
+import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:gas/utils/size_config.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
