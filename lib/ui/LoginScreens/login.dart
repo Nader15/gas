@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/Api.dart';
 import 'package:gas/ui/home_page.dart';
-import 'package:gas/ui/verification.dart';
+import 'package:gas/ui/LoginScreens/verification.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_button.dart';
 import 'package:gas/utils/global_vars.dart';

@@ -22,7 +22,7 @@ dependencies:
   xs_progress_hud: ^1.0.2
   image_picker: ^0.6.0+10
 #  fluttertoast:
-
+  shared_preferences:
 dev_dependencies:
   flutter_test:
     sdk: flutter

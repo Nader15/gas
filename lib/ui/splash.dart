@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
 import 'package:gas/ui/home_page.dart';
-import 'package:gas/ui/login.dart';
+import 'package:gas/ui/LoginScreens/login.dart';
 import 'package:gas/ui/on_boarding.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:gas/utils/image_file.dart';
@@ -18,9 +18,19 @@ class _SplashState extends State<Splash> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
-      navigateAndClearStack(context, Login());
+    getDataFromShared().then((value) {
+      Future.delayed(Duration(seconds: 3), () {
+        if(BaseToken!=null){
+          navigateAndKeepStack(context, HomePage());
+
+        }
+        else {
+          navigateAndClearStack(context, Login());
+
+        }
+      });
     });
+
   }
 
   @override

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/Api.dart';
+import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
+import 'package:gas/ui/LoginScreens/UserModel.dart';
 import 'package:gas/ui/home_page.dart';
  import 'dart:async';
 import 'package:gas/utils/colors_file.dart';
@@ -19,15 +21,14 @@ class Verify extends StatefulWidget {
 
 class _SplashState extends State<Verify> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  bool _autoValidate = false;
+   bool _autoValidate = false;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  var phoneController = TextEditingController();
-  String _onCompleted = "";
+   String _onCompleted = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -59,7 +60,7 @@ class _SplashState extends State<Verify> {
 
                         // validation: validatePhone,
                         keyboardType: TextInputType.number,
-                        length: 4,
+                        length: 6,
                         autofocus: false,
                         onCompleted: (String value) {
                           print(value);
@@ -90,9 +91,14 @@ class _SplashState extends State<Verify> {
                             _validateInputs();
                             if (_key.currentState.validate()) {
 
-                              Api(context, _scaffoldKey).verifyCodeApi(_onCompleted,phoneController.text).then((value) {
-                                if(value){
-                                  navigateAndKeepStack(context, HomePage());
+                              Api(context, _scaffoldKey).verifyCodeApi(_onCompleted,widget.phone).then((value) {
+                                if(value is UserModel){
+                                  print("value:: ${value.results.token}");
+                                   setDataToShared(value.results.token,value.results.id).then((value) {
+                                    navigateAndKeepStack(context, HomePage());
+
+                                  });
+
 
                                 }
                               });

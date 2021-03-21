@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gas/ui/LoginScreens/UserModel.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/toast.dart';
 import 'package:http/http.dart' as http;
@@ -15,8 +16,8 @@ class Api {
 
   String baseUrl = 'http://18.188.206.243:8001/api/';
   String products = "Products";
-  String forgetPassword = "ForgetPassword";
-  String verifyCode = "VerifyCode";
+  String forgetPassword = "ForgetPassword/";
+  String verifyCode = "VerifyCode/";
   String customersAddresses = "CustomersAddresses";
   String basket = "basket";
   String orders = "Orders";
@@ -37,6 +38,7 @@ class Api {
       "telephoneno": "+966"+phone
     }}");
     print("PhoneBody ${response.statusCode}");
+    XsProgressHud.hide();
     if (response.statusCode == 200) {
       if (!response.body.contains("error")) {
         FN_showToast(
@@ -61,7 +63,7 @@ class Api {
     final String completeUrl = baseUrl + verifyCode;
     var data = {
       "validationCode": code,
-      "telephoneno":"966"+ phone
+      "telephoneno":"+966"+ phone
     };
     var userToJson = json.encode(data);
     final response = await http.post(
@@ -69,18 +71,20 @@ class Api {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        HttpHeaders.authorizationHeader: Token
+        // HttpHeaders.authorizationHeader: Token
       },
+
       body: userToJson,
     );
-
+print(userToJson);
     XsProgressHud.hide();
     if (response.statusCode == 200) {
       print( "body :"+json.decode(response.body).toString());
-      return true;
+      // return true;
+      return UserModel.fromJson(json.decode(response.body));
     } else {
       print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
+      FN_showToast('كود التفعيل غير صحيح', context,
           Colors.red, scaffoldKey);
       return false;
     }
