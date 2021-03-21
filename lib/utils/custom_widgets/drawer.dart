@@ -4,7 +4,7 @@ import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
-import 'package:gas/ui/my_addresses.dart';
+import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/ui/UserAddresses/my_addresses.dart';
 import 'package:gas/ui/my_wallet.dart';
 import 'package:gas/ui/notifications.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';

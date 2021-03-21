@@ -1,10 +1,18 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:gas/utils/toast.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
+import 'package:gas/ui/UserAddresses/UserAddresses_Model.dart';
 import 'package:gas/ui/add_address.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
+import 'package:gas/APiFunctions/Api.dart';
+import 'package:xs_progress_hud/xs_progress_hud.dart';
 
 class MyAddresses extends StatefulWidget {
   @override
@@ -13,10 +21,31 @@ class MyAddresses extends StatefulWidget {
 
 class _MyAddressesState extends State<MyAddresses> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  UserAddresses userAddresses;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(milliseconds: 0), () {
+      setState(() {
+        gettingData();
+      });
+    });
+  }
+
+  gettingData() {
+    setState(() {
+      Api(context,_scaffoldKey).customersAddressesApi(_scaffoldKey,"1");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
@@ -80,6 +109,9 @@ class _MyAddressesState extends State<MyAddresses> {
                   Text(
                     getTranslated(context, "AddAddress"),
                     style: _titleTextStyle,
+                  ),
+                  SizedBox(
+                    width: 10,
                   ),
                 ],
               ))

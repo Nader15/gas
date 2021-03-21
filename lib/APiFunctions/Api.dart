@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
 import 'package:gas/ui/HomeScreens/ProductsModel.dart';
 import 'package:gas/ui/LoginScreens/UserModel.dart';
+import 'package:gas/ui/UserAddresses/UserAddresses_Model.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/toast.dart';
 import 'package:http/http.dart' as http;
@@ -20,25 +21,25 @@ class Api {
   String products = "Products";
   String forgetPassword = "ForgetPassword/";
   String verifyCode = "VerifyCode/";
-  String customersAddresses = "CustomersAddresses";
+  String customersAddresses = "CustomersAddresses/";
   String basket = "basket";
   String orders = "Orders";
   String orderStatusDetails = "OrderStatusDetails";
   String checkCoupon = "check_coupon";
 
-
-  Future loginFunc(String phone,) async {
+  Future loginFunc(
+    String phone,
+  ) async {
     XsProgressHud.show(context);
 
     final String completeUrl = baseUrl + forgetPassword;
 
-    var response = await http.post(completeUrl, body: {
-      "telephoneno": "+966"+phone
-    },);
+    var response = await http.post(
+      completeUrl,
+      body: {"telephoneno": "+966" + phone},
+    );
     print("PhoneBody ${response.body}");
-    print("PhoneBody ${{
-      "telephoneno": "+966"+phone
-    }}");
+    print("PhoneBody ${{"telephoneno": "+966" + phone}}");
     print("PhoneBody ${response.statusCode}");
     XsProgressHud.hide();
     if (response.statusCode == 200) {
@@ -60,13 +61,10 @@ class Api {
     }
   }
 
-  Future verifyCodeApi(String code,String phone) async {
+  Future verifyCodeApi(String code, String phone) async {
     XsProgressHud.show(context);
     final String completeUrl = baseUrl + verifyCode;
-    var data = {
-      "validationCode": code,
-      "telephoneno":"+966"+ phone
-    };
+    var data = {"validationCode": code, "telephoneno": "+966" + phone};
     var userToJson = json.encode(data);
     final response = await http.post(
       completeUrl,
@@ -75,19 +73,17 @@ class Api {
         'Accept': 'application/json',
         // HttpHeaders.authorizationHeader: Token
       },
-
       body: userToJson,
     );
-print(userToJson);
+    print(userToJson);
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       // return true;
       return UserModel.fromJson(json.decode(response.body));
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('كود التفعيل غير صحيح', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast('كود التفعيل غير صحيح', context, Colors.red, scaffoldKey);
       return false;
     }
   }
@@ -135,23 +131,21 @@ print(userToJson);
     );
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       // return OrdersListModel.fromJson(dataContent);
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
 
-  Future cancelOrder(GlobalKey<ScaffoldState> _scaffoldKey,int Id) async {
+  Future cancelOrder(GlobalKey<ScaffoldState> _scaffoldKey, int Id) async {
     XsProgressHud.show(context);
 
     final String completeUrl = baseUrl + orders;
-    var data = {
-      "order_id": "12321"
-    };
+    var data = {"order_id": "12321"};
     var userToJson = json.encode(data);
     final response = await http.post(
       completeUrl,
@@ -164,27 +158,24 @@ print(userToJson);
     );
     Map<String, dynamic> dataContent = json.decode(response.body);
 
-
     print("dataContent:: ${dataContent}");
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       return true;
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
 
-  Future orderStatus(GlobalKey<ScaffoldState> _scaffoldKey,int Id) async {
+  Future orderStatus(GlobalKey<ScaffoldState> _scaffoldKey, int Id) async {
     XsProgressHud.show(context);
 
     final String completeUrl = baseUrl + orderStatusDetails;
-    var data = {
-      "order_id": "12321"
-    };
+    var data = {"order_id": "12321"};
     var userToJson = json.encode(data);
     final response = await http.post(
       completeUrl,
@@ -197,27 +188,24 @@ print(userToJson);
     );
     Map<String, dynamic> dataContent = json.decode(response.body);
 
-
     print("dataContent:: ${dataContent}");
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       return true;
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
 
-  Future checkCouponApi(GlobalKey<ScaffoldState> _scaffoldKey,int Id) async {
+  Future checkCouponApi(GlobalKey<ScaffoldState> _scaffoldKey, int Id) async {
     XsProgressHud.show(context);
 
     final String completeUrl = baseUrl + checkCoupon;
-    var data = {
-      "coupon": "12321"
-    };
+    var data = {"coupon": "12321"};
     var userToJson = json.encode(data);
     final response = await http.post(
       completeUrl,
@@ -230,49 +218,44 @@ print(userToJson);
     );
     Map<String, dynamic> dataContent = json.decode(response.body);
 
-
     print("dataContent:: ${dataContent}");
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       return true;
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
 
-  Future customersAddressesApi(GlobalKey<ScaffoldState> _scaffoldKey,int Id) async {
+  Future customersAddressesApi(
+      GlobalKey<ScaffoldState> _scaffoldKey, String Id) async {
     XsProgressHud.show(context);
 
-    final String completeUrl = baseUrl + customersAddresses;
-    var data = {
-      "address": "cwcwdwd"
-    };
-    var userToJson = json.encode(data);
-    final response = await http.post(
+    final String completeUrl = baseUrl + customersAddresses + Id;
+
+    final response = await http.get(
       completeUrl,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         HttpHeaders.authorizationHeader: BaseToken
       },
-      body: userToJson,
     );
     Map<String, dynamic> dataContent = json.decode(response.body);
-
 
     print("dataContent:: ${dataContent}");
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
-      return true;
+      print("body :" + json.decode(response.body).toString());
+      return UserAddresses.fromJson(dataContent);
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
@@ -280,9 +263,7 @@ print(userToJson);
   Future addOrderApi(GlobalKey<ScaffoldState> _scaffoldKey) async {
     XsProgressHud.show(context);
     final String completeUrl = baseUrl + basket;
-    var data = {
-      "order_id": "12321"
-    };
+    var data = {"order_id": "12321"};
     var userToJson = json.encode(data);
     final response = await http.post(
       completeUrl,
@@ -296,14 +277,13 @@ print(userToJson);
     Map<String, dynamic> dataContent = json.decode(response.body);
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print( "body :"+json.decode(response.body).toString());
+      print("body :" + json.decode(response.body).toString());
       return true;
     } else {
-      print( "body :"+json.decode(response.body).toString());
-      FN_showToast('${json.decode(response.body)}', context,
-          Colors.red, scaffoldKey);
+      print("body :" + json.decode(response.body).toString());
+      FN_showToast(
+          '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
   }
-
 }

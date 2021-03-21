@@ -1,12 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/ui/splash.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
-import 'package:gas/ui/my_addresses.dart';
+import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/ui/UserAddresses/my_addresses.dart';
 
 main() async {
   // if your flutter > 1.7.8 :  ensure flutter activated
+  HttpOverrides.global = new MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   GestureBinding.instance?.resamplingEnabled = true;
 
@@ -48,3 +51,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
+
