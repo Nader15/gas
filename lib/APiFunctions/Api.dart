@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/sharedPref/SharedPrefClass.dart';
 import 'package:gas/ui/HomeScreens/ProductsModel.dart';
 import 'package:gas/ui/LoginScreens/UserModel.dart';
+import 'package:gas/ui/TestLocalCart/CartModel.dart';
 import 'package:gas/ui/UserAddresses/UserAddresses_Model.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/toast.dart';
 import 'package:http/http.dart' as http;
+import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:xs_progress_hud/xs_progress_hud.dart';
 
 class Api {
@@ -88,10 +90,10 @@ class Api {
     }
   }
 
-  Future<dynamic> getProducts() async {
+  Future<dynamic> getProducts({String filterName}) async {
     XsProgressHud.show(context);
 
-    final String completeUrl = baseUrl + products;
+    final String completeUrl = baseUrl + products+"/?category=$filterName";
 
     // TODO: implement getStudents
     final response = await http.get(
@@ -285,5 +287,31 @@ class Api {
           '${json.decode(response.body)}', context, Colors.red, scaffoldKey);
       return false;
     }
+  }
+
+  checkItemsInCart(ProductItem productItem){
+
+
+
+    for(int x=0;x<cartList.length;x++){
+      print("elementname  ${cartList[x].name}");
+      if(productItem.id==cartList[x].id){
+        print("increseeee");
+
+          cartList[x].quantity +=1;
+
+
+        return ;
+
+      }
+
+    }
+
+      print ("add new ");
+      cartList.add(CartModel(price:productItem.unitprice ,name:translator.currentLanguage == 'ar'
+          ?productItem.productnameAr
+          : "${productItem.productnameEn}",id: productItem.id,image:  productItem.photoUrl,quantity: 1 ));
+
+
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gas/ui/HomeScreens/home_page.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 import 'package:gas/utils/size_config.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
@@ -188,23 +189,14 @@ class StaticUI {
     );
   }
 
-  NoDataFoundWidget() {
+  NoDataFoundWidget(BuildContext context) {
     return Container(
-        height: SizeConfig.safeBlockVertical * 100,
-        width: SizeConfig.safeBlockHorizontal * 100,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(top: 20),
-        child: Column(
-          children: [
-            Image.asset('images/noData.png'),
-            SizedBox(
-              height: 85,
-            ),
-            Text(
-              translator.translate('noDataFound'),
-              style: TextStyle(color: Color(0xffadadad), fontSize: 22),
-            ),
-          ],
-        ));
+        child: Container(
+            height: MediaQuery.of(context).size.height,
+            child: Center(child: Text(  getTranslated(context, "noDataFound")))));
   }
 
   closeApp(BuildContext context) {

@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gas/ui/TestLocalCart/CartModel.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/custom_divider.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
+import 'package:gas/utils/static_ui.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:gas/ui/payment.dart';
 
@@ -23,7 +25,7 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         backgroundColor: primaryAppColor,
         title: Text(
-          getTranslated(context, "OrderDetails"),
+          getTranslated(context, "cart"),
           style: TextStyle(fontWeight: FontWeight.w100),
         ),
         actions: [
@@ -43,7 +45,7 @@ class _CartState extends State<Cart> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Align(
+            cartList.length==0?StaticUI().NoDataFoundWidget(context):   Align(
                 alignment: Alignment.topRight,
                 child: Column(
                   children: [
@@ -53,9 +55,9 @@ class _CartState extends State<Cart> {
                         padding: const EdgeInsets.all(8.0),
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: 1,
+                          itemCount: cartList.length,
                           itemBuilder: (context, index) {
-                            return order();
+                            return order(cartList[index]);
                           },
                         ),
                       ),
@@ -72,7 +74,7 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-  Widget order() {
+  Widget order(CartModel cartModel) {
     return Column(
       children: [
         Row(
@@ -87,7 +89,7 @@ class _CartState extends State<Cart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "أسطوانة حديد 11 كجم",
+                  cartModel.name,
                   style: TextStyle(color: greenAppColor),
                 ),
                 Row(
@@ -104,7 +106,9 @@ class _CartState extends State<Cart> {
                           children: [
                             InkWell(
                               onTap: () {
-
+setState(() {
+  cartModel.quantity+=1;
+});
                               },
                               child: Icon(
                                 Icons.add,
@@ -113,11 +117,21 @@ class _CartState extends State<Cart> {
                               ),
                             ),
                             Text(
-                              "1",
+                              "${cartModel.quantity}",
                               style: TextStyle(color: greenAppColor),
                             ),
                             InkWell(
                               onTap: () {
+                                if(cartModel.quantity==0){
+                                  setState(() {
+                                    cartList.remove(cartModel);
+                                  });
+                                }
+                                else if(cartModel.quantity>0){
+                                  setState(() {
+                                    cartModel.quantity-=1;
+                                  });
+                                }
 
                               },
                               child: Icon(
@@ -132,7 +146,11 @@ class _CartState extends State<Cart> {
                       width: 10,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          cartList.remove(cartModel);
+                        });
+                      },
                       child: Icon(
                         Icons.delete_forever,
                         color: redColor,
@@ -149,7 +167,7 @@ class _CartState extends State<Cart> {
                   shape: BoxShape.rectangle,
                   border: Border.all(color: greenAppColor)),
               child: Text(
-                "15.25 " + getTranslated(context, "Currency"),
+                "${(cartModel.price)*cartModel.quantity} " + getTranslated(context, "Currency"),
                 style: TextStyle(color: greenAppColor),
               ),
             ),

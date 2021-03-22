@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gas/APiFunctions/Api.dart';
 import 'package:gas/ui/HomeScreens/ProductsModel.dart';
+import 'package:gas/ui/TestLocalCart/CartModel.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/global_vars.dart';
+import 'package:gas/utils/static_ui.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 
 class Products extends StatefulWidget {
@@ -27,7 +29,7 @@ class _ProductsState extends State<Products> {
   }
 
   getProducts() {
-    Api(context, _scaffoldKey).getProducts().then((value) {
+    Api(context, _scaffoldKey).getProducts(filterName: "product").then((value) {
       productsModel = value;
       productsModel.results.forEach((element) {
         setState(() {
@@ -55,7 +57,7 @@ class _ProductsState extends State<Products> {
                     color: whiteColor)),
           ),
         ),
-        body: Padding(
+        body: productsList.length==0?StaticUI().NoDataFoundWidget(context):Padding(
           padding: const EdgeInsets.all(15.0),
           child: GridView.builder(
             itemCount: productsList.length,
@@ -94,7 +96,7 @@ class _ProductsState extends State<Products> {
                                 width: 90,
                               )
                             : Image.network(
-                                imageUrl + productsList[index].photoUrl,
+                                 productsList[index].photoUrl,
                                 height: 90,
                               ),
                       ),
@@ -112,9 +114,8 @@ class _ProductsState extends State<Products> {
                                   greenAppColor),
                             ),
                             onPressed: () {
-                              setState(() {
+                           Api(context, _scaffoldKey).   checkItemsInCart(productsList[index]);
 
-                              });
                             },
                             child: Container(
                               alignment: Alignment.center,

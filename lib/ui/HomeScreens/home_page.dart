@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/ui/HomeScreens/products.dart';
@@ -23,6 +25,23 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
+@override
+  void initState() {
+    // TODO: implement initState
+
+updateCart();
+    super.initState();
+  }
+  updateCart(){
+
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        cartList.length= cartList.length;
+
+      });
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +57,25 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontWeight: FontWeight.w100),
             ),
             actions: [
-              IconButton(icon: Icon(
-                Icons.shopping_cart,
-                size: 30.0,
-              ), onPressed: () {
-                navigateAndKeepStack(context, TestProducts());
-              })
+              Stack(
+                children: [
+                  IconButton(icon: Icon(
+                    Icons.shopping_cart,
+                    size: 20.0,
+                  ), onPressed: () {
+                    navigateAndKeepStack(context, Cart());
+                    // navigateAndKeepStack(context, TestProducts());
+                  }),
+
+
+                  cartList.length==0?Container():     Padding(
+                    padding: const EdgeInsets.all(2),
+                    child: Container(
+                      decoration: BoxDecoration(    borderRadius: BorderRadius.circular(10),color: Colors.white)
+                      ,width: 20,height: 20,child: Center(child: Text(cartList.length.toString(),style: TextStyle(color: Colors.red),)),),
+                  )
+                ],
+              )
             ],
             backgroundColor: primaryAppColor,
             leading: IconButton(

@@ -1,3 +1,5 @@
+import 'package:gas/utils/global_vars.dart';
+
 class ProductsModel {
   int count;
   dynamic next;
@@ -37,7 +39,7 @@ class ProductItem {
   String productnameAr;
   String productnameEn;
   dynamic unitmeasure;
-  int unitprice;
+  dynamic unitprice;
   String details;
   int imageid;
 
@@ -55,7 +57,7 @@ class ProductItem {
   ProductItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     imageurl = json['imageurl'];
-    photoUrl = json['photo_url'];
+    photoUrl = json['photo_url']!=null?imageUrl+json['photo_url']:json['photo_url'];
     productnameAr = json['productname_ar'];
     productnameEn = json['productname_en'];
     unitmeasure = json['unitmeasure'];

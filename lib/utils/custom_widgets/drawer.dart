@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gas/ui/HomeScreens/home_page.dart';
+import 'package:gas/ui/UserAddresses/my_addresses.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
-import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/ui/UserAddresses/my_addresses.dart';
 import 'package:gas/ui/my_wallet.dart';
 import 'package:gas/ui/notifications.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:gas/ui/HomeScreens/home_page.dart';
 import 'package:gas/ui/splash.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
-import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/gas/lib/ui/UserAddresses/my_addresses.dart';
 
 main() async {
   // if your flutter > 1.7.8 :  ensure flutter activated
