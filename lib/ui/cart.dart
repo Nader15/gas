@@ -15,51 +15,10 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  int value = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 3.5,
-                decoration: BoxDecoration(
-                    color: redColor, borderRadius: BorderRadius.circular(5)),
-                alignment: Alignment.center,
-                child: Text("60 " + getTranslated(context, "SR"),
-                    style: TextStyle(
-                        fontWeight: FontWeight.w100,
-                        fontSize: 18,
-                        color: whiteColor)),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                navigateAndKeepStack(context, Payment());
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width / 2,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.blue, borderRadius: BorderRadius.circular(5)),
-                alignment: Alignment.center,
-                child: Text(getTranslated(context, "CompleteThePurchase"),
-                    style: TextStyle(
-                        fontWeight: FontWeight.w100,
-                        fontSize: 15,
-                        color: whiteColor)),
-              ),
-            ),
-          ],
-        ),
-      ),
       drawer: drawerList(),
       appBar: AppBar(
         backgroundColor: primaryAppColor,
@@ -72,7 +31,7 @@ class _CartState extends State<Cart> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(10),
         child: _mainForm(context),
       ),
     );
@@ -89,14 +48,15 @@ class _CartState extends State<Cart> {
                 child: Column(
                   children: [
                     Card(
-                      elevation: 10,
+                      elevation:10,
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            order(),
-                            order(),
-                          ],
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 1,
+                          itemBuilder: (context, index) {
+                            return order();
+                          },
                         ),
                       ),
                     ),
@@ -112,9 +72,6 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-
-  bool defaultAddress = false;
-
   Widget order() {
     return Column(
       children: [
@@ -147,9 +104,7 @@ class _CartState extends State<Cart> {
                           children: [
                             InkWell(
                               onTap: () {
-                                setState(() {
-                                  value++;
-                                });
+
                               },
                               child: Icon(
                                 Icons.add,
@@ -158,14 +113,12 @@ class _CartState extends State<Cart> {
                               ),
                             ),
                             Text(
-                              "$value",
+                              "1",
                               style: TextStyle(color: greenAppColor),
                             ),
                             InkWell(
                               onTap: () {
-                                setState(() {
-                                  value--;
-                                });
+
                               },
                               child: Icon(
                                 Icons.remove,
@@ -206,7 +159,6 @@ class _CartState extends State<Cart> {
       ],
     );
   }
-
   Widget details() {
     return Card(
       elevation: 10,
@@ -451,4 +403,6 @@ class _CartState extends State<Cart> {
 }
 
 TextStyle _titleTextStyle =
-    TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
+TextStyle(color: greenAppColor, fontSize: 15, fontWeight: FontWeight.w100);
+
+

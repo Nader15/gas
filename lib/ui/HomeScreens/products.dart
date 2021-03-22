@@ -11,31 +11,32 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-   ProductsModel productsModel;
-   List<ProductItem> productsList=List();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  ProductsModel productsModel;
+  List<ProductItem> productsList = List();
+
   @override
   void initState() {
     // TODO: implement initState
 
-  super.initState();
-  Future.delayed( Duration(milliseconds: 0), () {
-    getProducts();
-  });
+    super.initState();
+    Future.delayed(Duration(milliseconds: 0), () {
+      getProducts();
+    });
     super.initState();
   }
-  getProducts(){
-  Api(context, _scaffoldKey).getProducts().then((value) {
 
-    productsModel=value;
-    productsModel.results.forEach((element) {
-setState(() {
-  productsList.add(element);
-
-});
+  getProducts() {
+    Api(context, _scaffoldKey).getProducts().then((value) {
+      productsModel = value;
+      productsModel.results.forEach((element) {
+        setState(() {
+          productsList.add(element);
+        });
+      });
     });
-  });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +48,7 @@ setState(() {
             decoration: BoxDecoration(
                 color: redColor, borderRadius: BorderRadius.circular(5)),
             alignment: Alignment.center,
-            child: Text(
-                getTranslated(context, "OrderStatus"),
+            child: Text(getTranslated(context, "OrderStatus"),
                 style: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 18,
@@ -80,31 +80,42 @@ setState(() {
                         decoration: BoxDecoration(
                             border: Border.all(color: greenAppColor)),
                         child: Text(
-                          " ${productsList[index].unitprice} " + getTranslated(context, "Currency"),
+                          " ${productsList[index].unitprice} " +
+                              getTranslated(context, "Currency"),
                           // "15.5 " + getTranslated(context, "Currency"),
                           style: TextStyle(color: greenAppColor),
                         ),
                       ),
                       Center(
-                        child:
-                        productsList[index].imageurl==null||productsList[index].imageurl.isEmpty?
-                        Image.asset(
-                          "assets/images/tube.png",
-                          width: 90,
-                        ):Image.network(imageUrl+productsList[index].photoUrl,height: 150,),
+                        child: productsList[index].imageurl == null ||
+                                productsList[index].imageurl.isEmpty
+                            ? Image.asset(
+                                "assets/images/tube.png",
+                                width: 90,
+                              )
+                            : Image.network(
+                                imageUrl + productsList[index].photoUrl,
+                                height: 90,
+                              ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(translator.currentLanguage=='ar'?productsList[index].productnameAr:"${productsList[index].productnameEn}"),
+                          Text(translator.currentLanguage == 'ar'
+                              ? productsList[index].productnameAr
+                              : "${productsList[index].productnameEn}"),
                           // Text("منظم غاز 50 مل بار"),
                           ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   greenAppColor),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+
+                              });
+                            },
                             child: Container(
                               alignment: Alignment.center,
                               width: MediaQuery.of(context).size.width,
@@ -124,4 +135,5 @@ setState(() {
           ),
         ));
   }
+
 }

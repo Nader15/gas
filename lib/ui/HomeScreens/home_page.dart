@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas/ui/HomeScreens/products.dart';
 import 'package:gas/ui/HomeScreens/recharge.dart';
+import 'package:gas/ui/TestLocalCart/test_products.dart';
 import 'package:gas/ui/cart.dart';
 import 'package:gas/utils/colors_file.dart';
 import 'package:gas/utils/custom_widgets/drawer.dart';
- import 'package:gas/ui/HomeScreens/new_products.dart';
- import 'package:gas/utils/global_vars.dart';
+import 'package:gas/ui/HomeScreens/new_products.dart';
+import 'package:gas/utils/global_vars.dart';
 import 'package:gas/utils/navigator.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +38,12 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontWeight: FontWeight.w100),
             ),
             actions: [
-              IconButton(
-                  icon: Icon(Icons.shopping_cart),
-                  onPressed: () {
-                    navigateAndKeepStack(context, Cart());
-                  })
+              IconButton(icon: Icon(
+                Icons.shopping_cart,
+                size: 30.0,
+              ), onPressed: () {
+                navigateAndKeepStack(context, TestProducts());
+              })
             ],
             backgroundColor: primaryAppColor,
             leading: IconButton(
