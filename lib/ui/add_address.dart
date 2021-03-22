@@ -95,7 +95,7 @@ class _AddAddressState extends State<AddAddress> {
                             ),
                           ),
                         ),
-                        TextButton(
+                        FlatButton(
                             child: Text(
                               "حذف",
                               style: TextStyle(color: primaryAppColor),
@@ -111,16 +111,16 @@ class _AddAddressState extends State<AddAddress> {
                 height: 100,
               ),
 
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: primaryAppColor, // background
-                      onPrimary: Colors.white, // foreground
-                    ),
-                    onPressed: () {},
-                    child: Text("تأكيد")),
-              )
+              // Container(
+              //   width: MediaQuery.of(context).size.width,
+              //   child: ElevatedButton(
+              //       style: ElevatedButton.styleFrom(
+              //         primary: primaryAppColor, // background
+              //         onPrimary: Colors.white, // foreground
+              //       ),
+              //       onPressed: () {},
+              //       child: Text("تأكيد")),
+              // )
             ],
           ),
         ),

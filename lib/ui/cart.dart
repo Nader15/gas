@@ -308,7 +308,7 @@ setState(() {
                 Row(
                   children: [
                     Icon(
-                      Icons.library_add_check_outlined,
+                      Icons.radio_button_unchecked,
                       color: greenAppColor,
                     ),
                     SizedBox(
@@ -380,7 +380,7 @@ setState(() {
                   ],
                 ),
                 Icon(
-                  Icons.library_add_check_outlined,
+                  Icons.check_box,
                   color: greenAppColor,
                 ),
               ],

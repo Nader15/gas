@@ -84,7 +84,7 @@ class _MyWalletState extends State<MyWallet> {
                           SizedBox(
                             height: 10,
                           ),
-                          TextButton(
+                          FlatButton(
                               onPressed: () {},
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +197,7 @@ class _MyWalletState extends State<MyWallet> {
                             ],
                           ),
                           CustomDivider(),
-                          TextButton(
+                          FlatButton(
                               onPressed: () {},
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,

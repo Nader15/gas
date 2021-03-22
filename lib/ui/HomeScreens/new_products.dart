@@ -107,11 +107,11 @@ class _NewProductsState extends State<NewProducts> {
                               ? productsList[index].productnameAr
                               : "${productsList[index].productnameEn}"),
                           // Text("منظم غاز 50 مل بار"),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  greenAppColor),
-                            ),
+                          FlatButton(
+                            // style: ButtonStyle(
+                            //   backgroundColor: MaterialStateProperty.all<Color>(
+                            //       greenAppColor),
+                            // ),
                             onPressed: () {
                               Api(context, _scaffoldKey).   checkItemsInCart(productsList[index]);
 

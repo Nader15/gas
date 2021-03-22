@@ -105,7 +105,7 @@ class _SplashState extends State<Verify> {
                             }
                           }),
                     ),
-                    // TextButton(
+                    // FlatButton(
                     //   onPressed: () {},
                     //   child: Text(
                     //     "اعادة ارسال الكود",

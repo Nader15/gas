@@ -105,7 +105,7 @@ class _NotificationsState extends State<Notifications> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              TextButton(
+                              FlatButton(
                                   onPressed: () {},
                                   child: Text(
                                     getTranslated(context, "Delete"),
@@ -124,7 +124,7 @@ class _NotificationsState extends State<Notifications> {
                   ),
                   Row(
                     children: [
-                      TextButton(
+                      FlatButton(
                           onPressed: () {},
                           child: Text(
                             getTranslated(context, "DeleteAll"),
@@ -132,7 +132,7 @@ class _NotificationsState extends State<Notifications> {
                                 color: greenAppColor,
                                 fontWeight: FontWeight.w100),
                           )),
-                      TextButton(
+                      FlatButton(
                           onPressed: () {},
                           child: Text(
                             getTranslated(context, "DeleteSelected"),
